@@ -1,0 +1,14 @@
+<!--pages/music/music_lyric/music_lyric.wxml-->
+<text class="center">歌词&Player</text>
+<text>{{lyricname}}({{lyricid}})</text>
+<view class="music_lyric">
+  <scroll-view scroll-y="true" class="lyric">
+    <text>{{lyric_str}}</text>
+  </scroll-view>
+  <view class="control">
+    <button class="control_item" bindtap="play">play</button>
+    <button class="control_item" bindtap="pause">pause</button>
+    <button class="control_item" bindtap="stop">stop</button>
+    <button class="control_item" bindtap="back">back</button>
+  </view>
+</view>

@@ -1,0 +1,12 @@
+<!--pages/music/user/user.wxml-->
+<text>pages/music/user/user.wxml</text>
+<text>输入：</text>
+<input id="user_id" focus="false" maxlength="10" type="text" placeholder='input userId' placeholder-style='color:gray;' confirm-type="done" bindconfirm='setUserIdInput' />
+<text>用户推荐：</text>
+<view class="users">
+  <view class='advisedusers' wx:for="{{advisedUsers}}" wx:for-item="user" wx:key="userId">
+    <image bindtap='setUserId' data-id="{{user.userId}}" data-nickname="{{user.nickname}}" src="{{user.avatarUrl}}" class="advisedUserAvatar"></image>
+    <text bindtap='setUserId' data-id="{{user.userId}}" data-nickname="{{user.nickname}}">{{user.userId}}:{{user.nickname}}</text>
+    <text bindtap='setUserId' data-id="{{user.userId}}" data-nickname="{{user.nickname}}">:{{user.signature}}</text>
+  </view>
+</view>

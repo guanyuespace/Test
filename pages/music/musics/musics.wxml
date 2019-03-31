@@ -1,0 +1,19 @@
+<!--pages/music/music_musics/music_musics.wxml-->
+<text class="center">歌单详情</text>
+<view class="creators">
+  <image class="avatar" bindtap='backHome'  src="{{creator.avatarUrl}}"></image>
+  <text>{{creator.nickname}}:{{creator.signature}}</text> 
+</view>
+
+<text>\n</text>
+
+<scroll-view scroll-y="true" class="details">
+  <view class="eve_music" wx:for="{{musics}}" wx:for-item="item" wx:for-index="idx" wx:key="id">
+    <image  bindtap="switch2lyric" data-id="{{item.id}}" data-refer="{{item.name}}" style="width:17px;height:17px;margin-top:4px;" src="/res/play.png"></image>
+    <text bindtap="switch2lyric" data-id="{{item.id}}" data-refer="{{item.name}}">{{item.name}}({{item.id}})</text>
+    作者:(
+      <text  wx:for="{{musics[idx].ar}}" wx:for-item="cell" wx:key="cell.id">
+      <text>{{cell.name}}:{{cell.id}}</text>
+      </text>)
+  </view>
+</scroll-view>

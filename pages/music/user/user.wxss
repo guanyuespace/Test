@@ -1,0 +1,10 @@
+/* pages/music/user/user.wxss */
+.advisedusers{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.advisedUserAvatar {
+  height: 24px;
+  width: 24px;
+}

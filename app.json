@@ -1,0 +1,41 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/music/playlists/playlists",
+    "pages/music/musics/musics",
+    "pages/music/lyric/lyric",
+    "pages/github/github",
+    "pages/mail/mail",
+    "pages/music/user/user"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor": "#00f",
+    "list": [
+      {
+        "pagePath": "pages/music/playlists/playlists",
+        "text": "music",
+        "iconPath": "res/music.png",
+        "selectedIconPath": "res/music.png"
+      },
+      {
+        "pagePath": "pages/github/github",
+        "text": "github",
+        "iconPath": "res/github.png",
+        "selectedIconPath": "res/github.png"
+      },
+      {
+        "pagePath": "pages/mail/mail",
+        "text": "mail",
+        "iconPath": "res/mail.png",
+        "selectedIconPath": "res/mail.png"
+      }
+    ]
+  }
+}

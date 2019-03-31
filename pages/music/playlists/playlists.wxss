@@ -1,0 +1,37 @@
+/* pages/music/music_playlists/music_playlists.wxss */
+
+.head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+}
+
+.avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 5rpx;
+  border-radius: 50%;
+}
+
+.infos {
+  display: flex;
+  flex-direction: column;
+}
+
+.user {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: center;
+}
+
+.switchUserButton {
+  margin: 10px;
+}
+
+.playlists {
+  order: 1;
+  display: flex;
+  flex-direction: column;
+}

@@ -1,0 +1,15 @@
+<!--pages/music/music_playlists/music_playlists.wxml-->
+<view class='head'>
+  <image class="avatar" src="{{avatarUrl}}"></image>
+  <view class='user'>
+    <text class="center">{{nickname}}:{{userId}}</text>
+    <button class="switchUserButton" bindtap='switchUserButton'>切换用户</button>
+  </view>
+</view>
+<view class='infos'>
+  <scroll-view scroll-y="true" class="playlists" wx:for="{{playlists}}" wx:key="id">
+    <text>{{item.name}}</text>:
+    <text>{{item.id}}</text>
+    <image bindtap="getdetailPlayList" data-id="{{item.id}}" data-name="{{item.name}}" src="{{item.coverImgUrl}}"></image>
+  </scroll-view>
+</view>

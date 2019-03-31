@@ -1,0 +1,25 @@
+/* pages/music/music_lyric/music_lyric.wxss */
+
+.music_lyric {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.lyric {
+  display: flex;
+  height: 940rpx;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+}
+
+.control {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.control_item {
+  margin: 2rpx, 1rpx;
+}
