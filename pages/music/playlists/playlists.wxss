@@ -37,13 +37,15 @@
   width: 100%;
 }
 
-.imgforPlayList {
-  flex: 1;
-  vertical-align: middle;
+.unit {
+  display: flex;
+  flex-direction: row;
 }
 
 .imgforPlayList {
   order: 1;
+  flex: 1;
+  vertical-align: middle;
 }
 
 .imgforPlayList image {
@@ -51,18 +53,9 @@
   height: 120rpx;
 }
 
-.unit {
-  display: flex;
-  flex-direction: row;
-}
-
 .playlistName {
   order: 2;
   flex: 3;
   text-align: left;
-}
-
-.playlistName text {
-  display: block;
-  padding: 26rpx 0;
+  align-self: center;
 }

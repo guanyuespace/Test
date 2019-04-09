@@ -11,7 +11,9 @@ Page({
     nickname: "",
     avatarUrl: "",
     playlists: [],
-    switchFlag: false
+    switchFlag: false,
+    more: false,
+    offset: 0
   },
 
   /**
@@ -65,7 +67,7 @@ Page({
           },
         });
       } else {
-        core.getPlayList(this.data.userId, this);
+        core.getPlayList(this.data.userId, 0, this);
       }
     } catch (e) {
       console.log(JSON.stringify(e));
@@ -157,7 +159,7 @@ Page({
             },
           });
         } else {
-          core.getPlayList(this.data.userId, this);
+          core.getPlayList(this.data.userId, 0, this);
         }
       } catch (e) {
         console.log(JSON.stringify(e));
@@ -191,7 +193,13 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
-
+    if (this.data.more) {
+      console.log("loading ...");
+      this.data.offset += 20;
+      core.getPlayList(this.data.userId, this.data.offset, this);
+    }else{
+      console.log("no more playlist ......");
+    }
   },
 
   /**

@@ -15,7 +15,9 @@ Page({
     currentTime: '00:00',
     scrollLine: 0,
     durations: '04:26',
-    playFlag: false
+    length: 0,
+    playFlag: true,
+    timer: 0
   },
 
   /**
@@ -49,22 +51,37 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-    var length = 0;
     var query = wx.createSelectorQuery();
+    var that = this;
     query.select(".line").boundingClientRect((rect) => {
-      length = rect.width;
+      that.data.length = rect.width;
+      // console.log("length=" + length);
     }).exec();
 
-    setInterval(() => {
+    var all = app.globalData.audioPlayer.duration;
+    var mintues = Math.floor(all / 60);
+    var seconds = Math.floor(all - mintues * 60);
+    this.setData({
+      durations: mintues > 9 ? mintues + ":" + seconds : "0" + mintues + ":" + (seconds > 9 ? seconds : "0" + seconds)
+    }, () => {
+      console.log("------------------> "+this.data.durations+"\t"+all);
+    });
+
+    //更新进度条
+    if (this.data.timer != 0)
+      clearInterval(timer);
+    this.data.timer = setInterval(() => {
       // console.log("player: " + JSON.stringify(app.globalData.audioPlayer) + "\t" + app.globalData.audioPlayer.currentTime + " ; " + app.globalData.audioPlayer.duration);
-      var curTime = app.audioPlayer.currentTime;
+      var curTime = app.globalData.audioPlayer.currentTime;
       var mintues = Math.floor(curTime / 60);
-      var seconds = curTime - mintues * 60;
+      var seconds = Math.floor(curTime - mintues * 60);
       this.setData({
-        currentTime: mintues > 9 ? mintues + ":" + seconds : "0" + mintues + ":" + seconds,
-        scrollLine:
+        currentTime: mintues > 9 ? mintues + ":" + seconds : "0" + mintues + ":" + (seconds > 9 ? seconds : "0" + seconds),
+        scrollLine: curTime * this.data.length / app.globalData.audioPlayer.duration,
+      }, () => {
+        console.log(this.data.currentTime + "\t" + this.data.scrollLine);
       });
-    }, 1000);
+    }, 500);
   },
 
   /**
@@ -117,20 +134,30 @@ Page({
   },
 
   kuaijin: function() {
-    this.data.scrollLine += 20;
-    this.setData({
-      scrollLine: this.data.scrollLine,
-      currentTime: this.data.scrollLine
-    });
-    app.globalData.audioPlayer.seek(this.data.scrollLine);
+    var curTime = app.globalData.audioPlayer.currentTime;
+    var all = app.globalData.audioPlayer.duration;
+    console.log(curTime + "  " + all);
+    if (curTime < all) {
+      if (curTime + 10 < all) {
+        curTime += 10;
+        app.globalData.audioPlayer.seek(curTime);
+      } else {
+        curTime = all;
+        app.globalData.audioPlayer.seek(curTime);
+      }
+    }
   },
   kuaitui: function() {
-    // this.setData
-    this.data.scrollLine -= 20;
-    this.setData({
-      scrollLine: this.data.scrollLine,
-      currentTime: this.data.scrollLine
-    });
-    app.globalData.audioPlayer.seek(this.data.scrollLine);
+    var curTime = app.globalData.audioPlayer.currentTime;
+    console.log("???" + curTime);
+    if (curTime > 0) {
+      if (curTime - 10 > 0) {
+        curTime -= 10;
+        app.globalData.audioPlayer.seek(curTime);
+      } else {
+        curTime = 0;
+        app.globalData.audioPlayer.seek(curTime);
+      }
+    }
   }
 })

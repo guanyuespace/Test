@@ -1060,9 +1060,11 @@ var checkifNullPlayLists = function(playlists, that) {
       complete: function(res) {},
     });
   } else { //用户歌单不为空
+    var all = that.data.playlists.concat(playlists);
     //show playlists
     that.setData({
-      playlists: playlists
+      // playlists: playlists
+      playlists: all
     }, () => {
       console.log("playlists.length= " + that.data.playlists.length);
     });
@@ -1070,7 +1072,8 @@ var checkifNullPlayLists = function(playlists, that) {
     wx.setStorageSync("playLists_uid", that.data.userId);
     wx.setStorage({
       key: 'playlists',
-      data: playlists,
+      // data: playlists,
+      data: all,
       success: function(res) {
         console.log("save in cache");
       },
@@ -1083,8 +1086,8 @@ var checkifNullPlayLists = function(playlists, that) {
 /**
  * 根据UserID 获取用户歌单信息
  */
-var getPlayList = function(uid, that) {
-  var req_str = "{\"uid\":\"" + uid + "\",\"offset\":\"20\",\"csrf_token\":\"\",\"limit\":\"20\"}";
+var getPlayList = function(uid, offset, that) {
+  var req_str = "{\"uid\":\"" + uid + "\",\"offset\":\"" + offset + "\",\"csrf_token\":\"\",\"limit\":\"20\"}";
 
   var result = myFunc(req_str);
   wx.request({
@@ -1102,6 +1105,8 @@ var getPlayList = function(uid, that) {
         var data = res.data;
         if (data && data.code == 200) {
           //查看给用户下是否有歌单信息
+          that.data.more = res.data.more;
+
           checkifNullPlayLists(res.data.playlist, that);
         } else {
           console.log("error code:" + JSON.stringify(res));
@@ -1259,8 +1264,15 @@ var getCachedMusic = function(musicid, that) {
           app.globalData.audioPlayer.src = res.data.data[0].url;
           app.globalData.audioPlayer.autoplay = true;
           setTimeout(() => {
-            console.log("player: " + JSON.stringify(app.globalData.audioPlayer) + "\t" + app.globalData.audioPlayer.currentTime + " ; " + app.globalData.audioPlayer.duration);
-          }, 1000);
+            var all = app.globalData.audioPlayer.duration;
+            var mintues = Math.floor(all / 60);
+            var seconds = Math.floor(all - mintues * 60);
+            that.setData({
+              durations: mintues > 9 ? mintues + ":" + seconds : "0" + mintues + ":" + (seconds > 9 ? seconds : "0" + seconds)
+            }, () => {
+              console.log("------------------> " + that.data.durations + "\t" + all);
+            });
+          }, 500);
         } else {
           console.log("error code:" + res.data);
           console.log("req_str: " + req_str);

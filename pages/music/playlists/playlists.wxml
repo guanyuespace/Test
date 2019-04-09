@@ -13,7 +13,8 @@
         <image bindtap="getdetailPlayList" data-id="{{item.id}}" data-name="{{item.name}}" src="{{item.coverImgUrl}}"></image>
       </view>
       <view class="playlistName">
-        <text>{{item.name}}:{{item.id}}</text>
+        <text bindtap="getdetailPlayList" data-id="{{item.id}}" data-name="{{item.name}}">{{item.name}}</text>
+        <!-- {{item.id}} \n{{item.description}}-->
       </view>
     </view>
   </scroll-view>
