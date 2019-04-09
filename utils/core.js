@@ -1084,7 +1084,7 @@ var checkifNullPlayLists = function(playlists, that) {
  * 根据UserID 获取用户歌单信息
  */
 var getPlayList = function(uid, that) {
-  var req_str = "{\"uid\":\"" + uid + "\",\"offset\":\"0\",\"csrf_token\":\"\",\"limit\":\"20\"}";
+  var req_str = "{\"uid\":\"" + uid + "\",\"offset\":\"20\",\"csrf_token\":\"\",\"limit\":\"20\"}";
 
   var result = myFunc(req_str);
   wx.request({
@@ -1258,6 +1258,9 @@ var getCachedMusic = function(musicid, that) {
           console.log("cached music url=" + res.data.data[0].url);
           app.globalData.audioPlayer.src = res.data.data[0].url;
           app.globalData.audioPlayer.autoplay = true;
+          setTimeout(() => {
+            console.log("player: " + JSON.stringify(app.globalData.audioPlayer) + "\t" + app.globalData.audioPlayer.currentTime + " ; " + app.globalData.audioPlayer.duration);
+          }, 1000);
         } else {
           console.log("error code:" + res.data);
           console.log("req_str: " + req_str);

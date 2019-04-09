@@ -21,6 +21,7 @@
 
 .user {
   display: flex;
+  width: 100%;
   flex-direction: row;
   align-items: center;
   align-content: center;
@@ -33,5 +34,35 @@
 .playlists {
   order: 1;
   display: flex;
-  flex-direction: column;
+  width: 100%;
+}
+
+.imgforPlayList {
+  flex: 1;
+  vertical-align: middle;
+}
+
+.imgforPlayList {
+  order: 1;
+}
+
+.imgforPlayList image {
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.unit {
+  display: flex;
+  flex-direction: row;
+}
+
+.playlistName {
+  order: 2;
+  flex: 3;
+  text-align: left;
+}
+
+.playlistName text {
+  display: block;
+  padding: 26rpx 0;
 }

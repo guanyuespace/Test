@@ -1,14 +1,13 @@
 <!--index.wxml-->
 <view class="container">
   <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取微信用户信息 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+    <view class="userinfo-avatar">
+      <open-data type="userAvatarUrl"></open-data>
+    </view>
+    <open-data type="userNickName"></open-data>
   </view>
   <view class="usermotto">
-    <input id="user_id" focus="true" placeholder-style="color:gray" placeholder="userId:(default=275438773)" maxlength="10" type="text" confirm-type="done" bindconfirm='setUserId'/>
+    <input id="user_id" focus="true" placeholder-style="color:gray" placeholder="userId:(default=275438773)" maxlength="10" type="text" confirm-type="done" bindconfirm='setUserId' />
     <button class="user-motto" bindtap="switchToMenu">{{motto}}</button>
   </view>
 </view>

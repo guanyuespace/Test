@@ -11,7 +11,11 @@ Page({
     lyricid: 0,
     lyricname: "",
     lyric_str: "",
-    lyric_url: ""
+    lyric_url: "",
+    currentTime: '00:00',
+    scrollLine: 0,
+    durations: '04:26',
+    playFlag: false
   },
 
   /**
@@ -28,10 +32,10 @@ Page({
     });
 
     //获取歌词信息
-    core.getLyric(this.data.lyricid,this);
+    core.getLyric(this.data.lyricid, this);
 
     //获取歌曲URL
-    core.getCachedMusic(this.data.lyricid,this);
+    core.getCachedMusic(this.data.lyricid, this);
   },
 
   /**
@@ -45,7 +49,22 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    var length = 0;
+    var query = wx.createSelectorQuery();
+    query.select(".line").boundingClientRect((rect) => {
+      length = rect.width;
+    }).exec();
 
+    setInterval(() => {
+      // console.log("player: " + JSON.stringify(app.globalData.audioPlayer) + "\t" + app.globalData.audioPlayer.currentTime + " ; " + app.globalData.audioPlayer.duration);
+      var curTime = app.audioPlayer.currentTime;
+      var mintues = Math.floor(curTime / 60);
+      var seconds = curTime - mintues * 60;
+      this.setData({
+        currentTime: mintues > 9 ? mintues + ":" + seconds : "0" + mintues + ":" + seconds,
+        scrollLine:
+      });
+    }, 1000);
   },
 
   /**
@@ -82,18 +101,36 @@ Page({
   onShareAppMessage: function() {
 
   },
+
   play: function() {
-    app.globalData.audioPlayer.play();
+    if (!this.data.playFlag) {
+      app.globalData.audioPlayer.play();
+      this.setData({
+        playFlag: true
+      })
+    } else {
+      app.globalData.audioPlayer.pause();
+      this.setData({
+        playFlag: false
+      })
+    }
   },
-  pause: function() {
-    app.globalData.audioPlayer.pause();
+
+  kuaijin: function() {
+    this.data.scrollLine += 20;
+    this.setData({
+      scrollLine: this.data.scrollLine,
+      currentTime: this.data.scrollLine
+    });
+    app.globalData.audioPlayer.seek(this.data.scrollLine);
   },
-  stop: function() {
-    app.globalData.audioPlayer.stop();
-  },
-  back: function() {
-    wx.navigateBack({
-      delta: 1,
-    })
+  kuaitui: function() {
+    // this.setData
+    this.data.scrollLine -= 20;
+    this.setData({
+      scrollLine: this.data.scrollLine,
+      currentTime: this.data.scrollLine
+    });
+    app.globalData.audioPlayer.seek(this.data.scrollLine);
   }
 })

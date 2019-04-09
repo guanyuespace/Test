@@ -1,9 +1,11 @@
 /* pages/music/music_lyric/music_lyric.wxss */
-
+/**@import "./fonts/fonts.wxss"; **/
+@import "./fontIcon/iconfont.wxss";
 .music_lyric {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+ 
 }
 
 .lyric {
@@ -14,12 +16,55 @@
   align-content: center;
 }
 
-.control {
+/** 进度条框架 **/
+.paly-ctrl .line-box {
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
+  text-align: center;
+  margin-bottom: 50rpx;
+  font-size: 28rpx;
+  padding: 0 50rpx;
+}
+.paly-ctrl .line-box .star-timer {
+  flex: 1;
+}
+/** 进度条 **/
+.paly-ctrl .line-box .line {
+  width: 257rpx;
+  height: 10rpx;
+  border-radius: 10rpx;
+  background-color: rgb(20, 231, 13);
+  flex: 5;
+  margin: 16rpx 0;
+  position: relative;
+}
+/** 进度 **/
+.paly-ctrl .line-box .line i{
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color:#f16101;
+  height: 100%;
+  border-radius:10rpx;
+}
+.paly-ctrl .line-box .end-timer {
+  flex: 1;
 }
 
-.control_item {
-  margin: 2rpx, 1rpx;
+/** 播放暂停**/
+.ctrl {
+  width: 100%;
+  display:flex;
+  justify-content: center;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 0 50rpx;
+  position: absolute;/** ok **/
+  bottom:0%;
+  /**bottom: 80rpx;**//** ok **/
+}
+
+.ctrl view {
+  flex: 1;
+  font-size: 56rpx;
+  color:rgba(8, 233, 8, 0.877);
 }

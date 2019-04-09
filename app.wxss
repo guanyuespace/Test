@@ -8,6 +8,11 @@
   justify-content: space-between;
   padding: 200rpx 0;
   box-sizing: border-box;
+  /**
+  background-image: url("https://p1.music.126.net/aMVPsO00OqlVTS2yMH8RgA==/109951163785600029.jpg");
+  background-color: rgb(199，237，204);
+  background-size: 100% 100%;**/
+  
 }
 
 .center {

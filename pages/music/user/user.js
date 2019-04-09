@@ -15,7 +15,8 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    core.getAdvisedUsers(app.globalData.userInfo.nickName ? app.globalData.userInfo.nickName : "关月", this);
+    // core.getAdvisedUsers(app.globalData.userInfo.nickName ? app.globalData.userInfo.nickName : "关月", this);
+    core.getAdvisedUsers("雪文");
   },
 
   /**
@@ -81,7 +82,7 @@ Page({
     if (event.detail.value) {
       // user_id: 275438773
       app.globalData.music_user.id = event.detail.value;
-      app.globalData.music_user.nickname="";
+      app.globalData.music_user.nickname = "";
     }
     wx.switchTab({
       url: '/pages/music/playlists/playlists'

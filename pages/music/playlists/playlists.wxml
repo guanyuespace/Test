@@ -8,8 +8,13 @@
 </view>
 <view class='infos'>
   <scroll-view scroll-y="true" class="playlists" wx:for="{{playlists}}" wx:key="id">
-    <text>{{item.name}}</text>:
-    <text>{{item.id}}</text>
-    <image bindtap="getdetailPlayList" data-id="{{item.id}}" data-name="{{item.name}}" src="{{item.coverImgUrl}}"></image>
+    <view class='unit'>
+      <view class="imgforPlayList">
+        <image bindtap="getdetailPlayList" data-id="{{item.id}}" data-name="{{item.name}}" src="{{item.coverImgUrl}}"></image>
+      </view>
+      <view class="playlistName">
+        <text>{{item.name}}:{{item.id}}</text>
+      </view>
+    </view>
   </scroll-view>
 </view>

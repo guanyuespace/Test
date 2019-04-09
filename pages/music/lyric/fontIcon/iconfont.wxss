@@ -1,0 +1,34 @@
+@font-face {font-family: "iconfont";
+  src: url('iconfont.eot?t=1554799318129'); /* IE9 */
+  src: url('iconfont.eot?t=1554799318129#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAP0AAsAAAAACFgAAAOmAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDMgqDcIMlATYCJAMUCwwABCAFhG0HThs3B8iemjxtE4GyMC0sAICCIxbB09rrvN29y2V/gF2iAGU8ttVVZV1WpJiVZZkag0IRCZUhO73PfUF7hbzJW4Sp8ARuSbrf3JsPKBRQhPpECgaoUGEh1/L13aUdGDklUIvpJaMv+/9cTm+UJTC/ZbmMuWxv6qgXYDSBAtobo40BF8glyi3D27pUh3WaQDVDH7Jn3+UNVBV0UiDOnnIMqGaMSkNu6IS2YmURz0GjSw8wWAA8C74fP4FpcJM0GZ25//iRDdsvia8/sPm/GRzzECCazg5xHRmrgEKcq3SeVYjCq6Cq/65oA6g6SfqS+NL1Kvv68/+PIT2QurI/PIokZKJFswfABlGUixM5wkTVhRwSX2X1AlU/GJHxXG4qZjzCDkqbpczXXVAWhflh7hvz9ue/9J4aTqNF9DGChsYGF8WxVF46PZLBiCr2aqbq9w8MLEldMBDYL5q/tx+k6wN8Ao+GEHhjMLqZl/9hyM++GFw6XqwsWUd1PqvNTBFv6QjHDYZVn03J3lnzqXXxbu38ugw6vKHRp1V20GJbupgzOColNTQw0C8u3h/ea+FRvcL7laHrDspioceM5/HcHQKfGBPSVT4x7XEtep7r8PERgmwd+ShMyLZVyiN4B/2jmmIqNc6FQyZLg9uU/53fiSuYcXGxC9dHm58i1pG1de+tQPua/IfTqqPmmqMTuCr9tHK1/rOxdrlTjwh4yavZq4v6VaZ5s5UdPvAH8L0Qq/fPxOIuMLtvvE+Hd1SE/ubqHrSrPvTyhd9dyc3YYuSu/T1NoBpgN3gKXQH5P4ZhBIdPUDyIgnOw/A+T48KD08UkIfu/jq+Az+Q6OpbtQkG+AH6TSmfR/xR1rCqGhJqaolU6Qs3V2JMySnpDxV/0jrmZRj3ZOUjoMiIRkj7TkHVm0UJdhUbPGrQ661Ct8FrfM65UQZR+LOsACCO2IBnyDrIROLRQr6Ex5Q1aIwGhOhBiO/bMR051O0cGk41mDXppMha2heth7hU5aWiotCSg35HSng/Hhsb52AnFpKaYoyudCZcLFKUywmM4j8JQYlIqfbJ44JZzshkaZVZdaWAVRVC3TSEGRmwo1RuUwyLFhFef1Qufv0IcqZBBNRDq3HeIonndIxOGjDugJ8q4E+FWLimTcUyUYwLKpEgR5Al2ErKwhIqrh/mIhQ1kDwgmNoxIrcyuysHy6ugdd0BFJzeRIkeJJloDF99Ts0yKKafGa668i/4ATr1i8VnjDQAAAA==') format('woff2'),
+  url('iconfont.woff?t=1554799318129') format('woff'),
+  url('iconfont.ttf?t=1554799318129') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('iconfont.svg?t=1554799318129#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 32px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-iconfontstop:before {
+  content: "\e71a";
+  color: red;
+}
+
+.icon-ai19:before {
+  content: "\e687";
+}
+
+.icon-kuaitui:before {
+  content: "\e7f3";
+}
+
+.icon-play:before {
+  content: "\e65e";
+}
+

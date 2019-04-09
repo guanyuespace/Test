@@ -5,10 +5,31 @@
   <scroll-view scroll-y="true" class="lyric">
     <text>{{lyric_str}}</text>
   </scroll-view>
-  <view class="control">
-    <button class="control_item" bindtap="play">play</button>
-    <button class="control_item" bindtap="pause">pause</button>
-    <button class="control_item" bindtap="stop">stop</button>
-    <button class="control_item" bindtap="back">back</button>
+</view>
+
+<!-- 模拟进度条 -->
+<view class='paly-ctrl'>
+  <view class='line-box'>
+    <text class='star-timer'>{{currentTime}}</text>
+    <view class='line'><!-- 进度条 -->
+      <i style="width:{{scrollLine}}px;"></i>
+    </view>
+    <text class='end-timer'>{{durations}}</text>
   </view>
 </view>
+<!-- 矢量图标库中代码  -->
+<view class='ctrl'>
+   <!-- 快退 -->
+  <view>
+    <text bindtap='kuaitui' class='iconfont icon-kuaitui'></text>
+  </view>
+  <!--播放 -->
+  <view bindtap='play'>
+    <text class='{{playFlag ? "iconfont icon-play":"iconfont icon-iconfontstop"}}'></text>
+   <!-- <audio src='{{musicSrc}}'></audio> -->
+  </view>
+  <!-- 快进 -->
+  <view>
+    <text bindtap='kuaijin' class='iconfont icon-ai19'></text>
+  </view>
+ </view>
