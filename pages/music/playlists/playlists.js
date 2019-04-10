@@ -67,7 +67,8 @@ Page({
           },
         });
       } else {
-        core.getPlayList(this.data.userId, 0, this);
+        this.clearPlayListsCache();
+        core.getPlayList(this.data.userId, 0, this, true);
       }
     } catch (e) {
       console.log(JSON.stringify(e));
@@ -83,7 +84,7 @@ Page({
        */
       app.globalData.lyricPage.setDurations();
       /*
-         */
+       */
     });
     app.globalData.audioPlayer.onError((res) => {
       console.log(res.errMsg);
@@ -153,7 +154,7 @@ Page({
       ////用户歌单信息获取
       try {
         var uid = wx.getStorageSync("playLists_uid");
-        console.log("playlist uid=" + uid);
+        console.log("cached playlist uid=" + uid + "\t now=" + this.data.userId);
         if (uid == this.data.userId) {
           var self = this;
           wx.getStorage({
@@ -167,7 +168,10 @@ Page({
             },
           });
         } else {
-          core.getPlayList(this.data.userId, 0, this);
+          //清理上次用户残留
+          this.clearPlayListsCache();
+          //added ....
+          core.getPlayList(this.data.userId, 0, this, true);
         }
       } catch (e) {
         console.log(JSON.stringify(e));
@@ -195,6 +199,14 @@ Page({
    */
   onPullDownRefresh: function() {
 
+  },
+
+
+
+  clearPlayListsCache: function() {
+    this.setData({
+      playlists: []
+    })
   },
 
   /**

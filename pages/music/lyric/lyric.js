@@ -37,7 +37,7 @@ Page({
     core.getLyric(this.data.lyricid, this);
 
     //获取歌曲URL
-    core.getCachedMusic(this.data.lyricid, this);
+    core.getCachedMusic(this.data.lyricid,app);
   },
 
   /**

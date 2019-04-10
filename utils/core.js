@@ -1022,10 +1022,10 @@ var myFunc = function(parasjson) {
   return bzl6f;
 };
 ///////////////////////////////////////////////////////////////////
-const app = getApp();
+// const app = getApp();
 
 //检查歌单信息并。。。
-var checkifNullPlayLists = function(playlists, that) {
+var checkifNullPlayLists = function (playlists, that) {
   // console.log("playlists.length= " + playlists.length);
   if (!playlists || playlists.length == 0) {
     wx.showModal({
@@ -1235,7 +1235,10 @@ var getLyric = function(musicid, that) {
         console.log(res.data)
       }
     },
-    fail: function(res) {},
+    fail: function(res) {
+      console.log("failed: " + JSON.stringify(res));
+      console.log("req_str:  " + req_str);
+    },
     complete: function(res) {},
   })
 
@@ -1244,7 +1247,7 @@ var getLyric = function(musicid, that) {
 /**
  * 获取歌曲url
  */
-var getCachedMusic = function(musicid, that) {
+var getCachedMusic = function(musicid, app) {
   var req_str = "{\"ids\":\"[" + musicid + "]\",\"level\":\"standard\",\"encodeType\":\"aac\",\"csrf_token\":\"\"}";
   var result = myFunc(req_str);
   wx.request({
@@ -1260,7 +1263,7 @@ var getCachedMusic = function(musicid, that) {
     success: function(res) {
       if (res.statusCode == 200) {
         if (res.data && res.data.code == 200) {
-          console.log("cached music url=" + res.data.data[0].url + "\t" + app.globalData.music_user);
+          console.log("cached music url=" + res.data.data[0].url);
           app.globalData.audioPlayer.src = res.data.data[0].url;
           app.globalData.audioPlayer.autoplay = true;
         } else {
@@ -1271,7 +1274,10 @@ var getCachedMusic = function(musicid, that) {
         console.log(res.data)
       }
     },
-    fail: function(res) {},
+    fail: function(res) {
+      console.log("failed: " + JSON.stringify(res));
+      console.log("req_str:  " + req_str);
+    },
     complete: function(res) {},
   })
 }
@@ -1373,8 +1379,8 @@ var getPics = function() {
         //属性名不包含引号出错，无法parse 
         var reg = /picUrl\s+:\s+\"([\w|\d|\\.|\\/|:|=]+)\"/g;
         var s;
-        while((s=reg.exec(str))){
-          console.log("轮播图-->"+s[1])
+        while ((s = reg.exec(str))) {
+          console.log("轮播图-->" + s[1])
         }
       } else {
         console.log("why?" + res.data);

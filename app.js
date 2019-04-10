@@ -8,7 +8,7 @@ App({
     wx.setStorageSync('logs', logs)
 
     //test
-    core.getPics();
+    // core.getPics();
 
     // 登录
     wx.login({

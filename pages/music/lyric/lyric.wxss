@@ -10,7 +10,7 @@
 
 .lyric {
   display: flex;
-  height: 940rpx;
+  height: 980rpx;
   flex-direction: column;
   align-items: center;
   align-content: center;
