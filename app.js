@@ -1,10 +1,14 @@
 //app.js
+const core=require("./utils/core.js");
 App({
-  onLaunch: function () {
+  onLaunch: function() {
     // 展示本地存储能力
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
+
+    //test
+    core.getPics();
 
     // 登录
     wx.login({
@@ -14,11 +18,12 @@ App({
     })
   },
   globalData: {
-    music_user:{
+    music_user: {
       id: 275438773,
       // id:123,
-      nickname:"关月天人"
+      nickname: "关月天人"
     },
-    audioPlayer:{}
+    audioPlayer: {},
+    lyricPage: 0
   }
 })

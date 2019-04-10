@@ -74,8 +74,16 @@ Page({
     }
     /////设置audioPlayer
     app.globalData.audioPlayer = wx.createInnerAudioContext();
+    console.log("create player....");
     app.globalData.audioPlayer.onPlay(() => {
       console.log("play .....");
+      /**
+       * notify ..
+       * 设置时长... ...
+       */
+      app.globalData.lyricPage.setDurations();
+      /*
+         */
     });
     app.globalData.audioPlayer.onError((res) => {
       console.log(res.errMsg);
@@ -197,7 +205,7 @@ Page({
       console.log("loading ...");
       this.data.offset += 20;
       core.getPlayList(this.data.userId, this.data.offset, this);
-    }else{
+    } else {
       console.log("no more playlist ......");
     }
   },

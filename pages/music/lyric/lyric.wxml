@@ -1,6 +1,6 @@
 <!--pages/music/music_lyric/music_lyric.wxml-->
 <text class="center">歌词&Player</text>
-<text>{{lyricname}}({{lyricid}})</text>
+<text>{{lyricname}}</text><!--({{lyricid}}) -->
 <view class="music_lyric">
   <scroll-view scroll-y="true" class="lyric">
     <text>{{lyric_str}}</text>

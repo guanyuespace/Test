@@ -1260,19 +1260,9 @@ var getCachedMusic = function(musicid, that) {
     success: function(res) {
       if (res.statusCode == 200) {
         if (res.data && res.data.code == 200) {
-          console.log("cached music url=" + res.data.data[0].url);
+          console.log("cached music url=" + res.data.data[0].url + "\t" + app.globalData.music_user);
           app.globalData.audioPlayer.src = res.data.data[0].url;
           app.globalData.audioPlayer.autoplay = true;
-          setTimeout(() => {
-            var all = app.globalData.audioPlayer.duration;
-            var mintues = Math.floor(all / 60);
-            var seconds = Math.floor(all - mintues * 60);
-            that.setData({
-              durations: mintues > 9 ? mintues + ":" + seconds : "0" + mintues + ":" + (seconds > 9 ? seconds : "0" + seconds)
-            }, () => {
-              console.log("------------------> " + that.data.durations + "\t" + all);
-            });
-          }, 500);
         } else {
           console.log("error code:" + res.data);
           console.log("req_str: " + req_str);
@@ -1366,6 +1356,35 @@ var getUserInfo = function(uid, that) {
 
 }
 
+
+/**
+ * 手机端无法获取轮播图,
+ * 服务器...
+ */
+var getPics = function() {
+  wx.request({
+    // url: 'https://www.baidu.com/discover',
+    url: 'https://127.0.0.1/discover',
+    method: 'GET',
+    success: function(res) {
+      // console.log(JSON.stringify(res));
+      if (res.statusCode == 200) {
+        var str = res.data;
+        //属性名不包含引号出错，无法parse 
+        var reg = /picUrl\s+:\s+\"([\w|\d|\\.|\\/|:|=]+)\"/g;
+        var s;
+        while((s=reg.exec(str))){
+          console.log("轮播图-->"+s[1])
+        }
+      } else {
+        console.log("why?" + res.data);
+      }
+    },
+    fail: function(res) {},
+    complete: function(res) {},
+  })
+}
+
 // module.exports.myFunc = myFunc
 
 module.exports.getPlayList = getPlayList
@@ -1374,3 +1393,4 @@ module.exports.getLyric = getLyric
 module.exports.getUserInfo = getUserInfo
 module.exports.getAdvisedUsers = getAdvisedUsers
 module.exports.getCachedMusic = getCachedMusic
+module.exports.getPics = getPics
