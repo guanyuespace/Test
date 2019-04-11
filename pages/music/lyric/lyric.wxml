@@ -17,17 +17,13 @@
     </scroll-view>
   </view>
 
-  <!-- 模拟进度条 -->
-  <view class='paly-ctrl'>
-    <view class='line-box'>
-      <text class='star-timer'>{{currentTime}}</text>
-      <view class='line'>
-        <!-- 进度条 -->
-        <i style="width:{{scrollLine}}px;"></i>
-      </view>
-      <text class='end-timer'>{{durations}}</text>
-    </view>
+  <!-- 进度条-->
+  <view class="paly-ctrl">
+    <text>{{currentTime}}</text>
+    <progress class="main" border-radius="5" percent="{{percentNow}}" backgroundColor='rgba(8, 233, 8, 0.877)' activeColor="red"></progress>
+    <text>{{durations}}</text>
   </view>
+
   <!-- 矢量图标库中代码  -->
   <view class='ctrl'>
     <!-- 快退 -->

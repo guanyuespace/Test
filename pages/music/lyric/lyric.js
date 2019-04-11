@@ -13,9 +13,8 @@ Page({
     lyric_str: "",
     lyric_url: "",
     currentTime: '00:00',
-    scrollLine: 0,
+    percentNow: 0,
     durations: '00:00',
-    length: 0,
     playFlag: true,
     timer: 0,
     bg: ""
@@ -55,10 +54,11 @@ Page({
    * 设置播放时长
    */
   setDurations: function() {
+    /**获取总时长 */
     var all;
     var temp = setInterval(() => {
       all = app.globalData.audioPlayer.duration;
-      console.log("why zero ???" + all);
+      console.log("all= " + all);
       var mintues = Math.floor(all / 60);
       var seconds = Math.floor(all - mintues * 60);
       this.setData({
@@ -70,27 +70,23 @@ Page({
       });
     }, 50);
 
-    var query = wx.createSelectorQuery();
-    var that = this;
-    query.select(".line").boundingClientRect((rect) => {
-      that.data.length = rect.width;
-    }).exec();
-
-    //更新进度条
+    /**更新进度条 */
     if (this.data.timer != 0)
       clearInterval(this.data.timer);
     this.data.timer = setInterval(() => {
-      // console.log("player: " + JSON.stringify(app.globalData.audioPlayer) + "\t" + app.globalData.audioPlayer.currentTime + " ; " + app.globalData.audioPlayer.duration);
       var curTime = app.globalData.audioPlayer.currentTime;
       var mintues = Math.floor(curTime / 60);
       var seconds = Math.floor(curTime - mintues * 60);
+
+      var percentdata=Math.floor(curTime*100/all);
       this.setData({
         currentTime: mintues > 9 ? mintues + ":" + seconds : "0" + mintues + ":" + (seconds > 9 ? seconds : "0" + seconds),
-        scrollLine: curTime * this.data.length / app.globalData.audioPlayer.duration,
+        percentNow: percentdata
       }, () => {
-        console.log(this.data.currentTime + "\t" + this.data.scrollLine);
+        console.log(this.data.currentTime + "\t" + this.data.percentNow);
       });
     }, 500);
+
   },
 
   /**

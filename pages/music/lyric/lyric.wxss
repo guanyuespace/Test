@@ -40,51 +40,28 @@
 .lyric {
   display: flex;
   /* height: 980rpx; */
-  height: 940rpx;
+  height: 830rpx;
   flex-direction: column;
   align-items: center;
   align-content: center;
 }
 
-/** 进度条框架 **/
+/** 进度条**/
 
-.paly-ctrl .line-box {
+.paly-ctrl {
   display: flex;
-  text-align: center;
+  width: 100%;
+  flex-direction: row;
   margin-bottom: 50rpx;
   font-size: 28rpx;
-  padding: 0 50rpx;
 }
 
-.paly-ctrl .line-box .star-timer {
+.paly-ctrl text {
   flex: 1;
 }
 
-/** 进度条 **/
-
-.paly-ctrl .line-box .line {
-  width: 257rpx;
-  height: 10rpx;
-  border-radius: 10rpx;
-  background-color: rgb(20, 231, 13);
-  flex: 5;
-  margin: 16rpx 0;
-  position: relative;
-}
-
-/** 进度 **/
-
-.paly-ctrl .line-box .line i {
-  position: absolute;
-  top: 0;
-  left: 0;
-  background-color: #f16101;
-  height: 100%;
-  border-radius: 10rpx;
-}
-
-.paly-ctrl .line-box .end-timer {
-  flex: 1;
+.paly-ctrl .main {
+  flex: 10;
 }
 
 /** 播放暂停**/
