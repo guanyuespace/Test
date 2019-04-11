@@ -1227,7 +1227,7 @@ var getLyric = function(musicid, that) {
               lyric_str: lyric_str
             }, () => {});
           } else {
-            var lyric_str = "\n\n\n\n\n暂时没有歌词 求歌词";
+            var lyric_str = "\n\n暂时没有歌词 求歌词";
             self.setData({
               lyric_str: lyric_str
             }, () => {
