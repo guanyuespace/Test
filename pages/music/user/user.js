@@ -16,7 +16,7 @@ Page({
    */
   onLoad: function(options) {
     // core.getAdvisedUsers(app.globalData.userInfo.nickName ? app.globalData.userInfo.nickName : "关月", this);
-    core.getAdvisedUsers("雪文",this);
+    core.getAdvisedUsers("关月",this);
   },
 
   /**

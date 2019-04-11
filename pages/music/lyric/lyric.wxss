@@ -24,35 +24,56 @@
   align-items: center;
 }
 
-.pic {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 5rpx;
-  border-radius: 50%;
+.ly_name {
+  flex-wrap: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  text-align: center;
 }
 
-.music_lyric {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+/** 旋转动画 **/
+
+.animate {
+  animation: rotatepic 30s infinite linear;
+  -webkit-animation: rotatepic 30s infinite linear;
+}
+
+.pic {
+  width: 592rpx;
+  height: 592rpx;
+  margin: 40rpx;
+  border-radius: 50%;
+  border: 30rpx solid;
+  transform: rotate(0deg);
 }
 
 .lyric {
   display: flex;
-  /* height: 980rpx; */
-  height: 830rpx;
   flex-direction: column;
   align-items: center;
   align-content: center;
+  height: 200rpx;
+  /* transform: translateY(80rpx) 移入显示 */
+}
+
+.lyric_str {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  mix-blend-mode: difference;
+  filter: invert(1);
 }
 
 /** 进度条**/
 
 .paly-ctrl {
+  position: relative;
+  top: 20rpx;
   display: flex;
   width: 100%;
   flex-direction: row;
-  margin-bottom: 50rpx;
   font-size: 28rpx;
 }
 
@@ -73,13 +94,38 @@
   text-align: center;
   box-sizing: border-box;
   padding: 0 50rpx;
-  position: absolute; /** ok **/
-  bottom: 0%;
-  /**bottom: 80rpx;**//** ok **/
+  position: relative; /** ok **/
+  top: 40rpx;
 }
 
 .ctrl view {
   flex: 1;
   font-size: 56rpx;
   color: rgba(8, 233, 8, 0.877);
+}
+
+/* 旋转 */
+
+@keyframes rotatepic {
+  0% {
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes rotatepic {
+  0% {
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+  }
 }

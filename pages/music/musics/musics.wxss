@@ -4,7 +4,6 @@
   background-color: rgba(135, 153, 189, 0.651)
 } */
 
-
 .creators {
   display: flex;
   flex-direction: column;
@@ -30,6 +29,8 @@
   margin-bottom: 20rpx;
   display: flex;
   flex-direction: column;
+  border: 2rpx solid white;
+  border-bottom-color: rgba(0, 0, 0, 0.1);
 }
 
 .music_name {
@@ -42,5 +43,5 @@
   flex-shrink: 2;
   flex-wrap: nowrap;
   font-size: 24rpx;
-  color: rgba(29, 218, 161, 0.781);
+  color: #888;
 }

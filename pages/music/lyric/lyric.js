@@ -75,16 +75,23 @@ Page({
       clearInterval(this.data.timer);
     this.data.timer = setInterval(() => {
       var curTime = app.globalData.audioPlayer.currentTime;
-      var mintues = Math.floor(curTime / 60);
-      var seconds = Math.floor(curTime - mintues * 60);
+      if (curTime < all) {
+        var mintues = Math.floor(curTime / 60);
+        var seconds = Math.floor(curTime - mintues * 60);
 
-      var percentdata=Math.floor(curTime*100/all);
-      this.setData({
-        currentTime: mintues > 9 ? mintues + ":" + seconds : "0" + mintues + ":" + (seconds > 9 ? seconds : "0" + seconds),
-        percentNow: percentdata
-      }, () => {
-        console.log(this.data.currentTime + "\t" + this.data.percentNow);
-      });
+        var percentdata = Math.floor(curTime * 100 / all);
+        this.setData({
+          currentTime: mintues > 9 ? mintues + ":" + seconds : "0" + mintues + ":" + (seconds > 9 ? seconds : "0" + seconds),
+          percentNow: percentdata
+        }, () => {
+          console.log(this.data.currentTime + "\t" + this.data.percentNow);
+        });
+      } else {
+        clearInterval(this.data.timer);
+        this.setData({
+          playFlag: false
+        });
+      }
     }, 500);
 
   },
@@ -156,6 +163,7 @@ Page({
       } else {
         curTime = all;
         app.globalData.audioPlayer.seek(curTime);
+        playFlag = false;
       }
     }
   },

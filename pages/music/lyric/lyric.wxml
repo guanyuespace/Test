@@ -6,16 +6,17 @@
   </view>
 
   <view class="title">
-    <text>{{lyricname}}</text>
-    <image class='pic' src="{{bg}}"></image>
+    <view class="ly_name">
+      <text>{{lyricname}}</text>
+    </view>
+    <view class="{{playFlag ?'animate':''}}">
+      <image class='pic' src="{{bg}}"></image>
+    </view>
   </view>
 
-  <!--({{lyricid}}) -->
-  <view class="music_lyric">
-    <scroll-view scroll-y="true" class="lyric">
-      <text>{{lyric_str}}</text>
-    </scroll-view>
-  </view>
+  <scroll-view scroll-y="true" class="lyric">
+    <text selectable="true" class="lyric_str">{{lyric_str}}</text>
+  </scroll-view>
 
   <!-- 进度条-->
   <view class="paly-ctrl">

@@ -20,7 +20,7 @@
           <!-- ({{item.id}}) -->
         </view>
         <view class="music_ar">
-          作者:(
+          歌手:(
           <text wx:for="{{musics[idx].ar}}" wx:for-item="cell" wx:key="cell.id">{{cell.name}}</text>)
           <!--:{{cell.id}} -->
         </view>

@@ -1025,7 +1025,7 @@ var myFunc = function(parasjson) {
 // const app = getApp();
 
 //检查歌单信息并。。。
-var checkifNullPlayLists = function (playlists, that) {
+var checkifNullPlayLists = function(playlists, that) {
   // console.log("playlists.length= " + playlists.length);
   if (!playlists || playlists.length == 0) {
     wx.showModal({
@@ -1220,13 +1220,20 @@ var getLyric = function(musicid, that) {
     success: function(res) {
       if (res.statusCode == 200) {
         if (res.data && res.data.code == 200) {
-          var lyric_str = res.data.lrc.lyric;
-          lyric_str = lyric_str.replace(/(\[\d+:\d+.\d+\])/g, "");
-          self.setData({
-            lyric_str: lyric_str
-          }, () => {
-
-          });
+          if (res.data.lrc && res.data.lrc.lyric) {
+            var lyric_str = res.data.lrc.lyric;
+            lyric_str = lyric_str.replace(/(\[\d+:\d+.\d+\])/g, "");
+            self.setData({
+              lyric_str: lyric_str
+            }, () => {});
+          } else {
+            var lyric_str = "\n\n\n\n\n暂时没有歌词 求歌词";
+            self.setData({
+              lyric_str: lyric_str
+            }, () => {
+              console.log(musicid + "\t" + lyric_str);
+            });
+          }
         } else {
           console.log("error code:" + res.data);
           console.log("req_str: " + req_str);
