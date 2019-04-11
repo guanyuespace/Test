@@ -1,35 +1,47 @@
 <!--pages/music/music_lyric/music_lyric.wxml-->
-<text class="center">歌词&Player</text>
-<text>{{lyricname}}</text><!--({{lyricid}}) -->
-<view class="music_lyric">
-  <scroll-view scroll-y="true" class="lyric">
-    <text>{{lyric_str}}</text>
-  </scroll-view>
-</view>
+<view>
+  <!-- 背景虚化 -->
+  <view class="background_img">
+    <image src="{{bg}}"></image>
+  </view>
 
-<!-- 模拟进度条 -->
-<view class='paly-ctrl'>
-  <view class='line-box'>
-    <text class='star-timer'>{{currentTime}}</text>
-    <view class='line'><!-- 进度条 -->
-      <i style="width:{{scrollLine}}px;"></i>
+  <view class="title">
+    <text>{{lyricname}}</text>
+    <image class='pic' src="{{bg}}"></image>
+  </view>
+
+  <!--({{lyricid}}) -->
+  <view class="music_lyric">
+    <scroll-view scroll-y="true" class="lyric">
+      <text>{{lyric_str}}</text>
+    </scroll-view>
+  </view>
+
+  <!-- 模拟进度条 -->
+  <view class='paly-ctrl'>
+    <view class='line-box'>
+      <text class='star-timer'>{{currentTime}}</text>
+      <view class='line'>
+        <!-- 进度条 -->
+        <i style="width:{{scrollLine}}px;"></i>
+      </view>
+      <text class='end-timer'>{{durations}}</text>
     </view>
-    <text class='end-timer'>{{durations}}</text>
+  </view>
+  <!-- 矢量图标库中代码  -->
+  <view class='ctrl'>
+    <!-- 快退 -->
+    <view>
+      <text bindtap='kuaitui' class='iconfont icon-kuaitui'></text>
+    </view>
+    <!--播放 -->
+    <view bindtap='play'>
+      <text class='{{playFlag ? "iconfont icon-play":"iconfont icon-iconfontstop"}}'></text>
+      <!-- <audio src='{{musicSrc}}'></audio> -->
+    </view>
+    <!-- 快进 -->
+    <view>
+      <text bindtap='kuaijin' class='iconfont icon-ai19'></text>
+    </view>
   </view>
 </view>
-<!-- 矢量图标库中代码  -->
-<view class='ctrl'>
-   <!-- 快退 -->
-  <view>
-    <text bindtap='kuaitui' class='iconfont icon-kuaitui'></text>
-  </view>
-  <!--播放 -->
-  <view bindtap='play'>
-    <text class='{{playFlag ? "iconfont icon-play":"iconfont icon-iconfontstop"}}'></text>
-   <!-- <audio src='{{musicSrc}}'></audio> -->
-  </view>
-  <!-- 快进 -->
-  <view>
-    <text bindtap='kuaijin' class='iconfont icon-ai19'></text>
-  </view>
- </view>

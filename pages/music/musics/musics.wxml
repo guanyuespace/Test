@@ -1,9 +1,12 @@
 <!--pages/music/music_musics/music_musics.wxml-->
 <view class="music_all">
+
+ 
   <text class="center">歌单详情</text>
   <view class="creators">
     <image class="avatar" bindtap='backHome' src="{{creator.avatarUrl}}"></image>
-    <text>{{creator.nickname}}:{{creator.signature}}</text>
+    <text class='center'>{{creator.nickname}}</text>
+    <text class='center'>{{creator.signature}}</text>
   </view>
 
   <text>\n</text>
@@ -13,7 +16,7 @@
       <view class="unit">
         <view class="music_name">
           <!--  <image bindtap="switch2lyric" data-id="{{item.id}}" data-refer="{{item.name}}" style="width:17px;height:17px;margin-top:4px;" src="/res/play.png"></image> -->
-          <text bindtap="switch2lyric" data-id="{{item.id}}" data-refer="{{item.name}}">{{item.name}}</text>
+          <text bindtap="switch2lyric" data-id="{{item.id}}" data-refer="{{item.name}}" data-bg="{{item.al.picUrl}}">{{item.name}}</text>
           <!-- ({{item.id}}) -->
         </view>
         <view class="music_ar">

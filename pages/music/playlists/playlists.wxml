@@ -2,7 +2,7 @@
 <view class='head'>
   <image class="avatar" src="{{avatarUrl}}"></image>
   <view class='user'>
-    <text class="center">{{nickname}}:{{userId}}</text>
+    <text class="center">{{nickname}}{{userId}}</text>
     <button class="switchUserButton" bindtap='switchUserButton'>切换用户</button>
   </view>
 </view>

@@ -134,8 +134,11 @@ Page({
   switch2lyric: function(event) {
     var id = event.target.dataset.id;
     var name = event.target.dataset.refer;
+    var bg = event.target.dataset.bg;
+    console.log("????=" + bg);
+    //get param=value  --> but value has the character '=' ....
     wx.navigateTo({
-      url: '/pages/music/lyric/lyric?id=' + id + "&name=" + name,
+      url: '/pages/music/lyric/lyric?id=' + id + "&name=" + name + "&bg=" + encodeURIComponent(bg),
       success: function(res) {},
       fail: function(res) {},
       complete: function(res) {},

@@ -4,6 +4,7 @@
   background-color: rgba(135, 153, 189, 0.651)
 } */
 
+
 .creators {
   display: flex;
   flex-direction: column;

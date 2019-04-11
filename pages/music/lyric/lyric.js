@@ -17,7 +17,8 @@ Page({
     durations: '00:00',
     length: 0,
     playFlag: true,
-    timer: 0
+    timer: 0,
+    bg: ""
   },
 
   /**
@@ -28,7 +29,8 @@ Page({
     //init
     this.setData({
       lyricid: options.id,
-      lyricname: options.name
+      lyricname: options.name,
+      bg: decodeURIComponent(options.bg)
     }, () => {
 
     });
@@ -37,7 +39,7 @@ Page({
     core.getLyric(this.data.lyricid, this);
 
     //获取歌曲URL
-    core.getCachedMusic(this.data.lyricid,app);
+    core.getCachedMusic(this.data.lyricid, app);
   },
 
   /**
