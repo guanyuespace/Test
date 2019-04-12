@@ -89,7 +89,8 @@ Page({
       } else {
         clearInterval(this.data.timer);
         this.setData({
-          playFlag: false
+          playFlag: false,
+          percentNow: 100
         });
       }
     }, 500);
@@ -163,7 +164,7 @@ Page({
       } else {
         curTime = all;
         app.globalData.audioPlayer.seek(curTime);
-        playFlag = false;
+        this.data.playFlag = false;
       }
     }
   },
