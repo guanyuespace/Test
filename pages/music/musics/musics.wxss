@@ -23,9 +23,15 @@
   flex-direction: column;
   align-items: flex-start;
   flex-wrap: wrap;
+  width: 100%;
+}
+
+.eve_music {
+  width: 100%;
 }
 
 .unit {
+  width: 100%;
   margin-bottom: 20rpx;
   display: flex;
   flex-direction: column;
@@ -34,8 +40,11 @@
 }
 
 .music_name {
-  display: flex;
-  flex-wrap: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  text-align: left;
 }
 
 .music_ar {

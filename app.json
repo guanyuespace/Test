@@ -5,9 +5,9 @@
     "pages/music/playlists/playlists",
     "pages/music/musics/musics",
     "pages/music/lyric/lyric",
-    "pages/github/github",
-    "pages/mail/mail",
-    "pages/music/user/user"
+    "pages/music/user/user",
+    "pages/github/login/login",
+    "pages/me/me"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -25,16 +25,16 @@
         "selectedIconPath": "res/music.png"
       },
       {
-        "pagePath": "pages/github/github",
+        "pagePath": "pages/github/login/login",
         "text": "github",
         "iconPath": "res/github.png",
         "selectedIconPath": "res/github.png"
       },
       {
-        "pagePath": "pages/mail/mail",
-        "text": "mail",
-        "iconPath": "res/mail.png",
-        "selectedIconPath": "res/mail.png"
+        "pagePath": "pages/me/me",
+        "text": "about",
+        "iconPath": "res/me.png",
+        "selectedIconPath": "res/me.png"
       }
     ]
   }

@@ -31,6 +31,8 @@
   white-space: nowrap;
   width: 100%;
   text-align: center;
+  mix-blend-mode: difference;
+  filter: invert(1);
 }
 
 /** 旋转动画 **/

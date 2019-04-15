@@ -1,4 +1,4 @@
-// pages/music/music_playlists/music_playlists.js
+ // pages/music/music_playlists/music_playlists.js
 const app = getApp();
 const core = require("../../../utils/core.js");
 Page({

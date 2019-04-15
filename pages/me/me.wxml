@@ -1,0 +1,12 @@
+<!--pages/me/me.wxml-->
+<view>
+  <text class='center'>个人数据-运动数据</text>
+  <button wx:if="{{!data}}" bindtap='getMWeRunData'>运动数据</button>
+  <scroll-view wx:if="{{data}}" scroll-y="true" class="rundata">
+    <view class='unit' wx:for="{{stepInfoList}}" wx:for-item="item" wx:key="timestamp">
+      <text>{{item.date}}:{{item.step}}</text>
+    </view>
+  </scroll-view>
+</view>
+
+<text class="todo">自备服务器获取session</text>

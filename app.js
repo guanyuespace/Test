@@ -1,5 +1,6 @@
 //app.js
-const core=require("./utils/core.js");
+const core = require("./utils/core.js");
+const decrypt = require("./utils/decrypt.js");
 App({
   onLaunch: function() {
     // 展示本地存储能力
@@ -7,21 +8,48 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
 
-    //test
-    // core.getPics();
-
-    // 登录
     wx.login({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        decrypt.getSession(this.globalData.security.appid, this.globalData.security.appsecret, res.code, this);
       }
+    });
+    //test
+    // core.getPics();
+  },
+  checkgetSession: function() {
+    var that = this;
+    wx.checkSession({
+      success: function(res) {
+        // session_key 未过期，并且在本生命周期一直有效
+        console.log("?????????????????????????????");
+        console.log(JSON.stringify(res));
+      },
+      fail: function(res) {
+        // session_key 已经失效，需要重新执行登录流程
+        // 登录
+        wx.login({
+          success: res => {
+            // 发送 res.code 到后台换取 openId, sessionKey, unionId
+            decrypt.getSession(that.globalData.security.appid, that.globalData.security.appsecret, res.code, that);
+          }
+        });
+      },
+      complete: function(res) {},
     })
+
   },
   globalData: {
     music_user: {
       id: 275438773,
       // id:123,
       nickname: "关月天人"
+    },
+    security: {
+      appid: "wxea74db422c9ef21d",
+      session: "",
+      openid: "",
+      appsecret: "83e0d4cc526a7b08ca492fc6977c5d62"
     },
     audioPlayer: {},
     lyricPage: 0

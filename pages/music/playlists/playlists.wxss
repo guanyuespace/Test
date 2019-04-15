@@ -32,12 +32,11 @@
 }
 
 .playlists {
-  order: 1;
-  display: flex;
   width: 100%;
 }
 
 .unit {
+  width: 100%;
   display: flex;
   flex-direction: row;
   border: 2rpx solid white;
