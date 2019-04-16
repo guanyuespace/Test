@@ -41,6 +41,21 @@ Page({
     //获取歌曲URL
     core.getCachedMusic(this.data.lyricid, this.data.lyricname, app);
   },
+  //下一曲页面
+  refresh: function(music) {
+    this.setData({
+      lyricid: music.id,
+      lyricname: music.name,
+      bg: music.al.picUrl
+    }, () => {
+
+    });
+    //获取歌词信息
+    core.getLyric(this.data.lyricid, this);
+
+    //获取歌曲URL
+    core.getCachedMusic(this.data.lyricid, this.data.lyricname, app);
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

@@ -31,8 +31,9 @@
   white-space: nowrap;
   width: 100%;
   text-align: center;
-  mix-blend-mode: difference;
-  filter: invert(1);
+  color: white;
+  /* mix-blend-mode: difference;
+  filter: invert(1); */
 }
 
 /* swiper */

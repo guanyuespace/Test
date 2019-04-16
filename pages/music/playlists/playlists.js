@@ -98,6 +98,10 @@
          //获取歌曲URL
          core.getCachedMusic(cur.id, cur.name, app);
          app.globalData.curMusic++;
+         if (app.globalData.lyricPage && app.globalData.lyricPage != 0) {
+          //  console.log("??????????????????"+cur);
+           app.globalData.lyricPage.refresh(cur);
+         }
        } else {
          console.log("播放列表已空!");
        }
