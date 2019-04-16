@@ -1,7 +1,7 @@
 <!--pages/music/music_musics/music_musics.wxml-->
 <view class="music_all">
 
- 
+
   <text class="center">歌单详情</text>
   <view class="creators">
     <image class="avatar" bindtap='backHome' src="{{creator.avatarUrl}}"></image>
@@ -9,14 +9,17 @@
     <text class='center'>{{creator.signature}}</text>
   </view>
 
-  <text>\n</text>
+  <view class='play-btn' bindtap='playAll'>
+    <text>播放全部</text>
+  </view>
 
-  <scroll-view scroll-y="true" class="details">
+  <view class="details">
+    <!--  scroll-y="true" -->
     <view class="eve_music" wx:for="{{musics}}" wx:for-item="item" wx:for-index="idx" wx:key="id">
       <view class="unit">
         <view class="music_name">
           <!--  <image bindtap="switch2lyric" data-id="{{item.id}}" data-refer="{{item.name}}" style="width:17px;height:17px;margin-top:4px;" src="/res/play.png"></image> -->
-          <text bindtap="switch2lyric" data-id="{{item.id}}" data-refer="{{item.name}}" data-bg="{{item.al.picUrl}}">{{item.name}}</text>
+          <text bindtap="switch2lyric" data-id="{{item.id}}" data-refer="{{item.name}}" data-obj="{{item}}" data-bg="{{item.al.picUrl}}">{{item.name}}</text>
           <!-- ({{item.id}}) -->
         </view>
         <view class="music_ar">
@@ -26,5 +29,5 @@
         </view>
       </view>
     </view>
-  </scroll-view>
+  </view>
 </view>

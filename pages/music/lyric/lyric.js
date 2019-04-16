@@ -17,6 +17,7 @@ Page({
     durations: '00:00',
     playFlag: true,
     timer: 0,
+    temp: 0,
     bg: ""
   },
 
@@ -38,7 +39,7 @@ Page({
     core.getLyric(this.data.lyricid, this);
 
     //获取歌曲URL
-    core.getCachedMusic(this.data.lyricid, app);
+    core.getCachedMusic(this.data.lyricid, this.data.lyricname, app);
   },
 
   /**
@@ -56,7 +57,7 @@ Page({
   setDurations: function() {
     /**获取总时长 */
     var all;
-    var temp = setInterval(() => {
+    this.data.temp = setInterval(() => {
       all = app.globalData.audioPlayer.duration;
       console.log("all= " + all);
       var mintues = Math.floor(all / 60);
@@ -66,7 +67,7 @@ Page({
       }, () => {
         console.log("------------------> " + this.data.durations + "\t" + all);
         if (all && all != 0)
-          clearInterval(temp);
+          clearInterval(this.data.temp);
       });
     }, 50);
 
@@ -108,7 +109,11 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function() {
-    clearInterval(timer);
+    if (this.data.temp != 0)
+      clearInterval(this.data.temp);
+    if (this.data.timer != 0)
+      clearInterval(this.data.timer);
+    app.globalData.lyricPage = null;
   },
 
   /**
@@ -142,10 +147,13 @@ Page({
   play: function() {
     if (!this.data.playFlag) {
       app.globalData.audioPlayer.play();
+      console.log("palyer: " + JSON.stringify(app.globalData.audioPlayer));
       this.setData({
         playFlag: true
       })
     } else {
+      if (this.data.timer != 0)
+        clearInterval(this.data.timer);
       app.globalData.audioPlayer.pause();
       this.setData({
         playFlag: false

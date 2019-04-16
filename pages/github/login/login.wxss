@@ -1,0 +1,30 @@
+/* pages/github/login/login.wxss */
+@import "./iconfont/iconfont.wxss";
+
+.login {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.unit {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  align-items: flex-end;
+  margin: 25px 50px 15px;
+}
+
+.unit text {
+  flex: 2;
+}
+
+.unit input {
+  flex: 4;
+  text-align: left;
+}
+
+.btn {
+  position: absolute;
+  left: 70px;
+}

@@ -7,7 +7,7 @@
   </view>
 </view>
 <view class='infos'>
-  <scroll-view scroll-y="true" class="playlists" wx:for="{{playlists}}" wx:key="id">
+  <view class="playlists" wx:for="{{playlists}}" wx:key="id"><!-- scroll-y="true" -->
     <view class='unit'>
       <view class="imgforPlayList">
         <image bindtap="getdetailPlayList" data-id="{{item.id}}" data-name="{{item.name}}" src="{{item.coverImgUrl}}"></image>
@@ -17,5 +17,5 @@
         <!-- {{item.id}} \n{{item.description}}-->
       </view>
     </view>
-  </scroll-view>
+  </view>
 </view>

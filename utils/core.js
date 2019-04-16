@@ -1254,7 +1254,7 @@ var getLyric = function(musicid, that) {
 /**
  * 获取歌曲url
  */
-var getCachedMusic = function(musicid, app) {
+var getCachedMusic = function(musicid, musicname, app) {
   var req_str = "{\"ids\":\"[" + musicid + "]\",\"level\":\"standard\",\"encodeType\":\"aac\",\"csrf_token\":\"\"}";
   var result = myFunc(req_str);
   wx.request({
@@ -1269,13 +1269,27 @@ var getCachedMusic = function(musicid, app) {
     method: 'POST',
     success: function(res) {
       if (res.statusCode == 200) {
-        if (res.data && res.data.code == 200) {
+        if (res.data && res.data.code == 200 && res.data.data) {
           console.log("cached music url=" + res.data.data[0].url);
           app.globalData.audioPlayer.src = res.data.data[0].url;
+          app.globalData.audioPlayer.title = musicname;
           app.globalData.audioPlayer.autoplay = true;
         } else {
           console.log("error code:" + res.data);
           console.log("req_str: " + req_str);
+          //下一曲
+          wx.showToast({
+            title: '由于不可抗力因素,下一曲',
+            icon: '',
+            image: '',
+            duration: 0,
+            mask: true,
+            success: function(res) {
+
+            },
+            fail: function(res) {},
+            complete: function(res) {},
+          });
         }
       } else {
         console.log(res.data)
@@ -1284,8 +1298,16 @@ var getCachedMusic = function(musicid, app) {
     fail: function(res) {
       console.log("failed: " + JSON.stringify(res));
       console.log("req_str:  " + req_str);
+      wx.showToast({
+        title: JSON.stringify(res),
+        duration: 2000,
+        mask: true,
+        success: function(res) {},
+        fail: function(res) {},
+        complete: function(res) {},
+      })
     },
-    complete: function(res) {},
+
   })
 }
 /**

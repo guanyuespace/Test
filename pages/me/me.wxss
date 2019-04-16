@@ -1,0 +1,15 @@
+/* pages/me/me.wxss */
+
+.rundata {
+  height: 430px;
+}
+
+.unit {
+  width: 100%;
+  margin-bottom: 20rpx;
+  display: flex;
+  flex-direction: column;
+  border: 2rpx solid white;
+  border-bottom-color: rgba(0, 0, 0, 0.1);
+  text-align: center;
+}

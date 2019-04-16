@@ -9,14 +9,19 @@
     <view class="ly_name">
       <text>{{lyricname}}</text>
     </view>
-    <view class="{{playFlag ?'animate':''}}">
-      <image class='pic' src="{{bg}}"></image>
-    </view>
+    <swiper class='playorlyric' indicator-dots="true" indicator-color="#678" indicator-active-color="red" duration='300' circular="true" current="0">
+      <swiper-item item-id="0">
+        <view class="center">
+          <image class="{{playFlag ?'animate':'pic'}}"  src="{{bg}}"></image><!-- class='pic'-->
+        </view>
+      </swiper-item>
+      <swiper-item item-id="1">
+        <scroll-view scroll-y="true" class="lyric">
+          <text selectable="true" class="lyric_str">{{lyric_str}}</text>
+        </scroll-view>
+      </swiper-item>
+    </swiper>
   </view>
-
-  <scroll-view scroll-y="true" class="lyric">
-    <text selectable="true" class="lyric_str">{{lyric_str}}</text>
-  </scroll-view>
 
   <!-- 进度条-->
   <view class="paly-ctrl">

@@ -1,0 +1,17 @@
+<!--pages/github/login/login.wxml-->
+<view class='login'>
+  <text class='iconfont icon-GitHub'></text>
+  <form bindsubmit="submitFunc">
+    <view class='unit'>
+      <text class='iconfont icon-login_zhanghu'></text>
+      <input name="account" placeholder="账号"></input>
+    </view>
+    <view class='unit'>
+      <text class='iconfont icon-3701mima'></text>
+      <input name="password" placeholder="密码"></input>
+    </view>
+    <button class="btn" type='primary' width="400rpx" form-type="submit">登陆</button>
+  </form>
+</view>
+
+<text class="todo">github.com未经ICP备案</text>

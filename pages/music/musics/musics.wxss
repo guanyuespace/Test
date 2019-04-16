@@ -4,6 +4,20 @@
   background-color: rgba(135, 153, 189, 0.651)
 } */
 
+.play-btn {
+  position: relative;
+  top: 20rpx;
+  left: 50%;
+  margin-left: -150rpx;
+  width: 300rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  border: 1px solid #32ff81;
+  border-radius: 40rpx;
+  margin-bottom: 20rpx;
+}
+
 .creators {
   display: flex;
   flex-direction: column;
@@ -23,9 +37,15 @@
   flex-direction: column;
   align-items: flex-start;
   flex-wrap: wrap;
+  width: 100%;
+}
+
+.eve_music {
+  width: 100%;
 }
 
 .unit {
+  width: 100%;
   margin-bottom: 20rpx;
   display: flex;
   flex-direction: column;
@@ -34,8 +54,11 @@
 }
 
 .music_name {
-  display: flex;
-  flex-wrap: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  text-align: left;
 }
 
 .music_ar {
