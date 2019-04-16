@@ -1269,7 +1269,7 @@ var getCachedMusic = function(musicid, musicname, app) {
     method: 'POST',
     success: function(res) {
       if (res.statusCode == 200) {
-        if (res.data && res.data.code == 200 && res.data.data) {
+        if (res.data && res.data.code == 200 && res.data.data && res.data.data[0].url) {
           console.log("cached music url=" + res.data.data[0].url);
           app.globalData.audioPlayer.src = res.data.data[0].url;
           app.globalData.audioPlayer.title = musicname;
@@ -1279,13 +1279,11 @@ var getCachedMusic = function(musicid, musicname, app) {
           console.log("req_str: " + req_str);
           //下一曲
           wx.showToast({
-            title: '由于不可抗力因素,下一曲',
-            icon: '',
-            image: '',
-            duration: 0,
+            title: '不可抗力因素',
+            duration: 2000,
             mask: true,
             success: function(res) {
-
+              console.log("手动下一曲吧！");
             },
             fail: function(res) {},
             complete: function(res) {},

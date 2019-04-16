@@ -99,7 +99,7 @@
          core.getCachedMusic(cur.id, cur.name, app);
          app.globalData.curMusic++;
          if (app.globalData.lyricPage && app.globalData.lyricPage != 0) {
-          //  console.log("??????????????????"+cur);
+           //  console.log("??????????????????"+cur);
            app.globalData.lyricPage.refresh(cur);
          }
        } else {
@@ -110,9 +110,6 @@
        // console.log("time !!!!!");
        // 播放进度
        // 作用？？
-
-
-
      });
      app.globalData.audioPlayer.onNext(() => {
        //  console.log("next !!!!!");
@@ -132,9 +129,10 @@
        if (app.globalData.playLists && app.globalData.playLists.length > 0) {
          app.globalData.curMusic = --app.globalData.curMusic % app.globalData.playLists.length;
          if (app.globalData.curMusic < 0) app.globalData.curMusic += app.globalData.playLists.length;
+         console.log("prev: " + app.globalData.curMusic);
          var cur = app.globalData.playLists[app.globalData.curMusic]; //app.globalData.playLists.splice(0, 1); //playLists.shift()
          //获取歌曲URL
-         core.getCachedMusic(cur[0].id, cur[0].name, app);
+         core.getCachedMusic(cur.id, cur.name, app);
        } else {
          console.log("播放列表已空!");
        }
