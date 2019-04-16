@@ -52,6 +52,9 @@ App({
       appsecret: "83e0d4cc526a7b08ca492fc6977c5d62"
     },
     audioPlayer: {},
+    playLists: [],
+    curMusic: 0,
+    /**按歌单进行播放 */
     lyricPage: 0
   }
 })

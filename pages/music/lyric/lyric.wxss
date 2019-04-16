@@ -35,17 +35,29 @@
   filter: invert(1);
 }
 
+/* swiper */
+
+.playorlyric {
+  width: 100%;
+  height: 950rpx;
+}
+
 /** 旋转动画 **/
 
 .animate {
   animation: rotatepic 30s infinite linear;
   -webkit-animation: rotatepic 30s infinite linear;
+  width: 592rpx;
+  height: 592rpx;
+  margin: 100rpx;
+  border-radius: 50%;
+  border: 30rpx solid;
 }
 
 .pic {
   width: 592rpx;
   height: 592rpx;
-  margin: 40rpx;
+  margin: 100rpx;
   border-radius: 50%;
   border: 30rpx solid;
   transform: rotate(0deg);
@@ -56,7 +68,7 @@
   flex-direction: column;
   align-items: center;
   align-content: center;
-  height: 200rpx;
+  height: 880rpx;
   /* transform: translateY(80rpx) 移入显示 */
 }
 

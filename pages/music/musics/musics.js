@@ -132,10 +132,15 @@ Page({
     })
   },
   switch2lyric: function(event) {
+    // app.globalData.playLists.push();//unshift//splice //but music object ...data-obj...
     var id = event.target.dataset.id;
     var name = event.target.dataset.refer;
     var bg = event.target.dataset.bg;
+    var obj = event.target.dataset.obj;
     console.log("????=" + bg);
+    ////在指定位置添加元素,第一个参数指定位置,第二个参数指定要删除的元素,如果为0,则追加
+    app.globalData.playLists.splice(app.globalData.curMusic, 0, obj);
+    app.globalData.curMusic++;
     //get param=value  --> but value has the character '=' ....
     wx.navigateTo({
       url: '/pages/music/lyric/lyric?id=' + id + "&name=" + name + "&bg=" + encodeURIComponent(bg),
@@ -143,5 +148,16 @@ Page({
       fail: function(res) {},
       complete: function(res) {},
     })
+  },
+  //播放歌单所有歌曲
+  playAll: function() {
+    //play all music here
+    if (this.data.musics && this.data.musics.length > 0) {
+      //获取歌曲URL
+      var cur = this.data.musics.splice(0, 1); //shift();
+      console.log(JSON.stringify(cur));
+      core.getCachedMusic(cur[0].id, cur[0].name, app);
+      app.globalData.playLists = this.data.musics;
+    }
   }
 })

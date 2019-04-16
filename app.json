@@ -37,5 +37,8 @@
         "selectedIconPath": "res/me.png"
       }
     ]
-  }
+  },
+  "requiredBackgroundModes": [
+    "audio"
+  ]
 }
