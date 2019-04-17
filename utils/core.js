@@ -1221,6 +1221,9 @@ var getLyric = function(musicid, that) {
       if (res.statusCode == 200) {
         if (res.data && res.data.code == 200) {
           if (res.data.lrc && res.data.lrc.lyric) {
+            /***
+             * 整理歌词实现滚动
+             */
             var lyric_str = res.data.lrc.lyric;
             lyric_str = lyric_str.replace(/(\[\d+:\d+.\d+\])/g, "");
             self.setData({

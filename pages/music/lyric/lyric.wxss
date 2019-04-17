@@ -15,6 +15,7 @@
   height: 100%;
   filter: blur(60rpx);
   -webkit-filter: blur(60rpx);
+  z-index:-1;
 }
 
 .title {
