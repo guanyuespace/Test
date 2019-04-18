@@ -1204,6 +1204,7 @@ var getMusic = function(playlistid, that) {
  * 获取歌词信息
  */
 var getLyric = function(musicid, that) {
+  that.data.lyric_time = [];
   var req_str = "{\"id\":\"" + musicid + "\",\"lv\":-1,\"tv\":-1,\"csrf_token\":\"\"}";
   var result = myFunc(req_str);
   var self = that;
@@ -1225,10 +1226,40 @@ var getLyric = function(musicid, that) {
              * 整理歌词实现滚动
              */
             var lyric_str = res.data.lrc.lyric;
-            lyric_str = lyric_str.replace(/(\[\d+:\d+.\d+\])/g, "");
-            self.setData({
-              lyric_str: lyric_str
-            }, () => {});
+            var lyric_rows = lyric_str.split(/\n|\r\n/);
+            for (let i = 0; i < lyric_rows.length; i++) {
+              var row = lyric_rows[i];
+              if (row) {
+                var reg = /\[(\d+):(\d+)\.\d+\](\s+)?(.*)?/;
+                var data = reg.exec(row);
+                if (data) {
+                  console.log("row=" + row + "\t" + JSON.stringify(data)); //匆匆 赵柯-二珂  歌曲 单行多个时间...
+                  var seconds = Number(data[1] * 60) + Number(data[2]);
+                  var secs = data[1] + ":" + data[2];
+                  var str = "";
+                  if (data.length > 4 && data[4]) {
+                    str = data[4];
+                    str = str.replace(/\[\d+:\d+\.\d+\]|\\/g, "");
+                  }
+                  // console.log("{\"secs\":\"" + secs + "\",\"str\":\"" + str + "\"}");
+                  //{"secs":"00:00","str":"作曲 : 殇小谨 \ 作词 : 偏生梓归"}
+                  // that.data.lyric_time.push(JSON.parse("{\"secs\":\"" + secs + "\",\"str\":\"" + str + "\"}"));//坑
+                  that.data.lyric_time.push({
+                    secs: secs,
+                    seconds: seconds,
+                    str: str
+                  });
+                }
+              }
+            }
+            that.data.lyric_time.sort((a, b) => {
+              return a.seconds - b.seconds;
+            });
+
+            console.log("...." + JSON.stringify(that.data.lyric_time));
+            that.setData({
+              lyric_time: that.data.lyric_time
+            });
           } else {
             var lyric_str = "\n\n暂时没有歌词 求歌词";
             self.setData({

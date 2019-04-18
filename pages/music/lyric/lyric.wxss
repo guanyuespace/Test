@@ -4,18 +4,40 @@
 @import "./fontIcon/iconfont.wxss";
 
 .background_img {
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  width: 100%;
+  height: 100%;
+}
+
+/**
+黑色背景
+*/
+
+.cover {
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+}
+
+/**
+背景图片
+*/
+
+.bg {
+  filter: blur(30px) brightness(0.8);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: absolute;
   width: 100%;
   height: 100%;
   z-index: -1;
-  position: absolute;
-}
-
-.background_img image {
-  width: 100%;
-  height: 100%;
-  filter: blur(60rpx);
-  -webkit-filter: blur(60rpx);
-  z-index:-1;
+  left: 0;
+  top: 0;
+  transform: scale(1.2);
+  background-color: transparent;
 }
 
 .title {
@@ -47,19 +69,23 @@
 /** 旋转动画 **/
 
 .animate {
+  order: 0;
   animation: rotatepic 30s infinite linear;
   -webkit-animation: rotatepic 30s infinite linear;
   width: 592rpx;
   height: 592rpx;
-  margin: 100rpx;
+  margin: 50rpx;
+  margin-bottom: 100rpx;
   border-radius: 50%;
   border: 30rpx solid;
 }
 
 .pic {
+  order: 0;
   width: 592rpx;
   height: 592rpx;
-  margin: 100rpx;
+  margin: 50rpx;
+  margin-bottom: 100rpx;
   border-radius: 50%;
   border: 30rpx solid;
   transform: rotate(0deg);
@@ -71,15 +97,35 @@
   align-items: center;
   align-content: center;
   height: 880rpx;
-  /* transform: translateY(80rpx) 移入显示 */
 }
 
 .lyric_str {
   display: flex;
   flex-direction: column;
   text-align: center;
+  /* mix-blend-mode: difference; */
+  filter: invert(1);
+}
+
+.highlight {
+  color: green;
+}
+
+.common {
+  font-size: 36rpx;
+}
+
+.show {
+  order: 1;
   mix-blend-mode: difference;
   filter: invert(1);
+  /* transform: translateY(-10); */
+}
+
+.hide {
+  order: 99;
+  z-index: -99;
+  /* transform: translateY(20); */
 }
 
 /** 进度条**/

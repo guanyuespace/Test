@@ -13,12 +13,14 @@ Page({
     lyric_str: "",
     lyric_url: "",
     currentTime: '00:00',
+    lastTime: '00:00',
     percentNow: 0,
     durations: '00:00',
     playFlag: true,
     timer: 0,
     temp: 0,
-    bg: ""
+    bg: "",
+    lyric_time: []
   },
 
   /**
@@ -86,21 +88,43 @@ Page({
       });
     }, 50);
 
+
+    // 滚动歌词选择器,遍历dom树,耗时卡死
+    // var query = wx.createSelectorQuery();
+    // var that = this;
+    // query.selectAll(".highlight").fields({
+    //     dataset: true
+    //   }, (res) => {
+    //     // console.log(JSON.stringify(res));
+    //     that.setData({
+    //       lastTime: res[res.length - 1].dataset.time
+    //     });
+    //   }).exec(),
+
     /**更新进度条 */
     if (this.data.timer != 0)
       clearInterval(this.data.timer);
     this.data.timer = setInterval(() => {
       var curTime = app.globalData.audioPlayer.currentTime;
+
+      ///////added to scroll the lyric/////////
+      var i = 0;
+      for (; i < this.data.lyric_time.length; i++) {
+        if (this.data.lyric_time[i].seconds >= curTime)
+          break;
+      }
+      ///////added to scroll the lyric/////////
+
       if (curTime < all) {
         var mintues = Math.floor(curTime / 60);
         var seconds = Math.floor(curTime - mintues * 60);
-
         var percentdata = Math.floor(curTime * 100 / all);
         this.setData({
           currentTime: mintues > 9 ? mintues + ":" + seconds : "0" + mintues + ":" + (seconds > 9 ? seconds : "0" + seconds),
-          percentNow: percentdata
+          percentNow: percentdata,
+          lastTime: this.data.lyric_time[i - 1 < 0 ? 0 : i - 1].secs
         }, () => {
-          console.log(this.data.currentTime + "\t" + this.data.percentNow);
+          console.log(this.data.currentTime + "\t" + this.data.percentNow + "lastTime=" + this.data.lastTime);
         });
       } else {
         clearInterval(this.data.timer);
@@ -110,7 +134,6 @@ Page({
         });
       }
     }, 500);
-
   },
 
   /**
