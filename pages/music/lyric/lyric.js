@@ -10,7 +10,6 @@ Page({
   data: {
     lyricid: 0,
     lyricname: "",
-    lyric_str: "",
     lyric_url: "",
     currentTime: '00:00',
     lastTime: '00:00',
@@ -20,7 +19,8 @@ Page({
     timer: 0,
     temp: 0,
     bg: "",
-    lyric_time: []
+    lyric_time: [],
+    curIndex: 0
   },
 
   /**
@@ -74,6 +74,8 @@ Page({
   setDurations: function() {
     /**获取总时长 */
     var all;
+    if (this.data.temp!=0)
+      clearInterval(this.data.temp);
     this.data.temp = setInterval(() => {
       all = app.globalData.audioPlayer.duration;
       console.log("all= " + all);
@@ -122,7 +124,8 @@ Page({
         this.setData({
           currentTime: mintues > 9 ? mintues + ":" + seconds : "0" + mintues + ":" + (seconds > 9 ? seconds : "0" + seconds),
           percentNow: percentdata,
-          lastTime: this.data.lyric_time[i - 1 < 0 ? 0 : i - 1].secs
+          lastTime: this.data.lyric_time[i - 1 < 0 ? 0 : i - 1].secs,
+          curIndex: i - 1
         }, () => {
           console.log(this.data.currentTime + "\t" + this.data.percentNow + "lastTime=" + this.data.lastTime);
         });

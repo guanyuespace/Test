@@ -97,21 +97,31 @@
   align-items: center;
   align-content: center;
   height: 880rpx;
+  overflow-y: hidden;
 }
 
 .lyric_str {
   display: flex;
   flex-direction: column;
   text-align: center;
-  /* mix-blend-mode: difference; */
+  margin-bottom: 50rpx;
   filter: invert(1);
+  -webkit-filter: invert(1);
 }
 
 .highlight {
+  text-align: center;
+  margin-bottom: 50rpx;
+  filter: invert(1);
+  -webkit-filter: invert(1);
   color: green;
 }
 
 .common {
+  text-align: center;
+  margin-bottom: 50rpx;
+  filter: invert(1);
+  -webkit-filter: invert(1);
   font-size: 36rpx;
 }
 
@@ -119,12 +129,15 @@
   order: 1;
   mix-blend-mode: difference;
   filter: invert(1);
+   color: green;
   /* transform: translateY(-10); */
 }
 
 .hide {
+  /* hidden: true; */
   order: 99;
   z-index: -99;
+  margin-top: 80px;
   /* transform: translateY(20); */
 }
 

@@ -3,9 +3,8 @@
   <!-- 背景虚化 -->
   <view class="background_img" id="wtf" data-hel='whhhh'>
     <image class="bg" src="{{bg}}"></image>
-    <image class="cover" src="http://p2.music.126.net/1QSIjG47zPCZf2pwI2J2YQ"></image>
+    <image class="cover" src=""></image>
   </view>
-
   <view class="title">
     <view class="ly_name">
       <text>{{lyricname}}</text>
@@ -14,7 +13,7 @@
       <swiper-item item-id="0">
         <view class="center">
           <image class="{{playFlag ?'animate':'pic'}}" src="{{bg}}"></image>
-          <text class="{{lastTime==item.secs?'show':'hide'}}" wx:for="{{lyric_time}}" wx:for-item="item" wx:for-index="idx">{{item.str}}</text>
+          <text hidden="{{lastTime==item.secs?false:true}}" class="show" wx:for="{{lyric_time}}" wx:for-item="item" wx:for-index="idx">{{item.str}}</text>
         </view>
       </swiper-item>
       <swiper-item item-id="1">
@@ -23,13 +22,14 @@
             <text selectable="true" class="lyric_str">{{lyric_str}}</text>  
         </scroll-view>
         -->
-        <scroll-view scroll-y="true" class="lyric">
-          <view class="lyric_str" wx:for="{{lyric_time}}" wx:for-item="item" wx:for-index="idx">
+        <view class="lyric">
+          <!--  class="lyric_str"-->
+          <view style="transform: translateY(-{{curIndex*900/20-500}}rpx)" wx:for="{{lyric_time}}" wx:key="item" wx:for-item="item" wx:for-index="idx">
             <!--lastTime=item.secs, -->
             <!-- <text class="{{currentTime==item.secs?'highlight':lastTime==item.secs?'highlight':'common'}}" data-time="{{item.secs}}">{{item.str}}</text> -->
             <text class="{{lastTime==item.secs?'highlight':'common'}}" data-time="{{item.secs}}">{{item.str}}</text>
           </view>
-        </scroll-view>
+        </view>
       </swiper-item>
     </swiper>
   </view>
