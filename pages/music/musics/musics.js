@@ -154,10 +154,11 @@ Page({
     //play all music here
     if (this.data.musics && this.data.musics.length > 0) {
       //获取歌曲URL
-      var cur = this.data.musics.splice(0, 1); //shift();
-      console.log(JSON.stringify(cur));
-      core.getCachedMusic(cur[0].id, cur[0].name, app);
+      var cur = this.data.musics[0]; 
+      console.log("cur="+JSON.stringify(cur));
+      core.getCachedMusic(cur.id, cur.name, app);
       app.globalData.playLists = this.data.musics;
+      app.globalData.curMusic = 0;
     }
   }
 })

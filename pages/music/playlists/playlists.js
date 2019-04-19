@@ -92,14 +92,13 @@
        }
      });
      app.globalData.audioPlayer.onEnded(() => {
+       //取消自动播放or设置标志位--->点击进入下一曲
        if (app.globalData.playLists && app.globalData.playLists.length > 0) {
          app.globalData.curMusic = ++app.globalData.curMusic % app.globalData.playLists.length;
          var cur = app.globalData.playLists[app.globalData.curMusic]; //playLists.shift()
          //获取歌曲URL
          core.getCachedMusic(cur.id, cur.name, app);
-         app.globalData.curMusic++;
          if (app.globalData.lyricPage && app.globalData.lyricPage != 0) {
-           //  console.log("??????????????????"+cur);
            app.globalData.lyricPage.refresh(cur);
          }
        } else {
@@ -111,6 +110,12 @@
        // 播放进度
        // 作用？？
      });
+
+
+     /**
+      * 系统后台播放
+      * 只需获取CachedMusicUrl
+      */
      app.globalData.audioPlayer.onNext(() => {
        //  console.log("next !!!!!");
        // 系统后台播放管理  

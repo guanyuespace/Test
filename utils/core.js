@@ -1222,24 +1222,24 @@ var getLyric = function(musicid, that) {
       if (res.statusCode == 200) {
         if (res.data && res.data.code == 200) {
           if (res.data.lrc && res.data.lrc.lyric) {
-            /***
-             * 整理歌词实现滚动
-             */
             var lyric_str = res.data.lrc.lyric;
+            /////翻译歌词--->  res.data.tlyric
+            if (res.data.tlyric && res.data.tlyric.lyric)
+              lyric_str += res.data.tlyric.lyric;
             var lyric_rows = lyric_str.split(/\n|\r\n/);
             for (let i = 0; i < lyric_rows.length; i++) {
               var row = lyric_rows[i];
               if (row) {
-                var reg = /((\[\d+:\d+\.\d+\])+)(\s+)?(.*)?/;
+                var reg = /((\[\d+:\d+(\.\d+)?\])+)(\s+)?(.*)?/;
                 var data = reg.exec(row);
-                if (data && data.length > 4 && data[4]) {
+                if (data && data.length > 5 && data[5]) {
                   // console.log("row=" + row + "\t" + JSON.stringify(data[1])); //匆匆 赵柯-二珂  歌曲 单行多个时间...
                   var times = data[1].split("]");
                   for (var j = 0; j < times.length - 1; j++) {
                     var temp = times[j];
                     var secs = temp.substr(1, 5);
                     var seconds = Number(temp.substr(1, 2)) * 60 + Number(temp.substr(4, 2));
-                    var str = data[4];
+                    var str = data[5];
                     console.log("secs=" + secs + "\t seconds=" + seconds + "\t str=" + str);
                     that.data.lyric_time.push({
                       secs: secs,
@@ -1253,10 +1253,10 @@ var getLyric = function(musicid, that) {
                   // console.log("{\"secs\":\"" + secs + "\",\"str\":\"" + str + "\"}");
                   //{"secs":"00:00","str":"作曲 : 殇小谨 \ 作词 : 偏生梓归"}
                   // that.data.lyric_time.push(JSON.parse("{\"secs\":\"" + secs + "\",\"str\":\"" + str + "\"}"));//坑
-
                 }
               }
             }
+
             that.data.lyric_time.sort((a, b) => {
               return a.seconds - b.seconds;
             });
@@ -1314,6 +1314,7 @@ var getCachedMusic = function(musicid, musicname, app) {
           app.globalData.audioPlayer.title = musicname;
           app.globalData.audioPlayer.autoplay = true;
         } else {
+          app.globalData.audioPlayer.stop();
           console.log("error code:" + res.data);
           console.log("req_str: " + req_str);
           //下一曲

@@ -23,7 +23,7 @@
         -->
         <view class="lyric">
         <!-- curIndex*900/20 -->
-          <view style="transform: translateY({{(11-curIndex)*900/22}}rpx)" wx:for="{{lyric_time}}" wx:key="item" wx:for-item="item" wx:for-index="idx">
+          <view style="transform: translateY({{(4-curIndex)*900/9}}rpx)" wx:for="{{lyric_time}}" wx:key="item" wx:for-item="item" wx:for-index="idx">
             <!--lastTime=item.secs, -->
             <!-- <text class="{{currentTime==item.secs?'highlight':lastTime==item.secs?'highlight':'common'}}" data-time="{{item.secs}}">{{item.str}}</text> -->
             <text class="{{lastTime==item.secs?'highlight':'common'}}" data-time="{{item.secs}}">{{item.str}}</text>
@@ -44,7 +44,7 @@
   <view class='ctrl'>
     <!-- 快退 -->
     <view>
-      <text bindtap='kuaitui' class='iconfont icon-kuaitui'></text>
+      <text bindtap='prevMusic' class='iconfont icon-kuaitui'></text>
     </view>
     <!--播放 -->
     <view bindtap='play'>
@@ -53,7 +53,7 @@
     </view>
     <!-- 快进 -->
     <view>
-      <text bindtap='kuaijin' class='iconfont icon-ai19'></text>
+      <text bindtap='nextMusic' class='iconfont icon-ai19'></text>
     </view>
   </view>
 </view>

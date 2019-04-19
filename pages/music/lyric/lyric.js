@@ -91,7 +91,6 @@ Page({
       });
     }, 50);
 
-
     // 滚动歌词选择器,遍历dom树,耗时卡死
     // var query = wx.createSelectorQuery();
     // var that = this;
@@ -125,7 +124,7 @@ Page({
         this.setData({
           currentTime: mintues > 9 ? mintues + ":" + seconds : "0" + mintues + ":" + (seconds > 9 ? seconds : "0" + seconds),
           percentNow: percentdata,
-          lastTime: this.data.lyric_time[i - 1 < 0 ? 0 : i - 1].secs,
+          lastTime: this.data.lyric_time[i - 1 < 0 ? 0 : i - 1] ? this.data.lyric_time[i - 1 < 0 ? 0 : i - 1].secs : "00:00", //sometimes尚未获取歌词
           curIndex: i - 1
         }, () => {
           console.log(this.data.currentTime + "\t" + this.data.percentNow + "lastTime=" + this.data.lastTime);
@@ -236,6 +235,25 @@ Page({
         curTime = 0;
         app.globalData.audioPlayer.seek(curTime);
       }
+    }
+  },
+  nextMusic: function() {
+    if (app.globalData.playLists && app.globalData.playLists.length > 0) {
+      app.globalData.curMusic = ++app.globalData.curMusic % app.globalData.playLists.length;
+      var cur = app.globalData.playLists[app.globalData.curMusic]; //playLists.shift()
+      this.refresh(cur);
+    } else {
+      console.log("播放列表已空!");
+    }
+  },
+  prevMusic: function() {
+    if (app.globalData.playLists && app.globalData.playLists.length > 0) {
+      app.globalData.curMusic = --app.globalData.curMusic % app.globalData.playLists.length;
+      if (app.globalData.curMusic < 0) app.globalData.curMusic += app.globalData.playLists.length;
+      var cur = app.globalData.playLists[app.globalData.curMusic]; //app.globalData.playLists.splice(0, 1); //playLists.shift()
+      this.refresh(cur);
+    } else {
+      console.log("播放列表已空!");
     }
   }
 })

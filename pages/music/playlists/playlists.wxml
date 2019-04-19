@@ -7,14 +7,13 @@
   </view>
 </view>
 <view class='infos'>
-  <view class="playlists" wx:for="{{playlists}}" wx:key="id"><!-- scroll-y="true" -->
+  <view class="playlists" wx:for="{{playlists}}" wx:key="id">
     <view class='unit'>
       <view class="imgforPlayList">
         <image bindtap="getdetailPlayList" data-id="{{item.id}}" data-name="{{item.name}}" src="{{item.coverImgUrl}}"></image>
       </view>
       <view class="playlistName">
         <text bindtap="getdetailPlayList" data-id="{{item.id}}" data-name="{{item.name}}">{{item.name}}</text>
-        <!-- {{item.id}} \n{{item.description}}-->
       </view>
     </view>
   </view>
