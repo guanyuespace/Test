@@ -27,7 +27,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log("lyric onLoad options=" + JSON.stringify(options));
+    console.log("lyricPage onLoad options=" + JSON.stringify(options));
     //init
     this.setData({
       lyricid: options.id,
@@ -73,16 +73,17 @@ Page({
    */
   setDurations: function() {
     /**获取总时长 */
+    console.log("lyricPage lyric setDurations start");
     var all;
-    if (this.data.temp!=0)
+    if (this.data.temp != 0)
       clearInterval(this.data.temp);
     this.data.temp = setInterval(() => {
       all = app.globalData.audioPlayer.duration;
-      console.log("all= " + all);
+      console.log("all= " + all + "\t temp_timer=" + this.data.temp);
       var mintues = Math.floor(all / 60);
       var seconds = Math.floor(all - mintues * 60);
       this.setData({
-        durations: mintues > 9 ? mintues + ":" + seconds : "0" + mintues + ":" + (seconds > 9 ? seconds : "0" + seconds)
+        durations: mintues > 9 ? mintues + ":" + (seconds > 9 ? seconds : "0" + seconds) : "0" + mintues + ":" + (seconds > 9 ? seconds : "0" + seconds)
       }, () => {
         console.log("------------------> " + this.data.durations + "\t" + all);
         if (all && all != 0)
@@ -143,6 +144,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
+    console.log("lyricPage onShow");
     app.globalData.lyricPage = this;
   },
 
@@ -155,13 +157,19 @@ Page({
     if (this.data.timer != 0)
       clearInterval(this.data.timer);
     app.globalData.lyricPage = null;
+    console.log("onHide lyricPage=" + app.globalData.lyricPage);
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function() {
-
+    if (this.data.temp != 0)
+      clearInterval(this.data.temp);
+    if (this.data.timer != 0)
+      clearInterval(this.data.timer);
+    app.globalData.lyricPage = null;
+    console.log("lyricPage onUnload lyricPage=" + app.globalData.lyricPage);
   },
 
   /**

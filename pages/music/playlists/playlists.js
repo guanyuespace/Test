@@ -80,7 +80,7 @@
      app.globalData.audioPlayer = wx.getBackgroundAudioManager();
      console.log("create player....");
      app.globalData.audioPlayer.onPlay(() => {
-       console.log("play .....");
+       console.log("play ..... lyricPage=" + app.globalData.lyricPage);
        if (app.globalData.lyricPage && app.globalData.lyricPage != 0) { //进入歌词页
          /**
           * notify ..
