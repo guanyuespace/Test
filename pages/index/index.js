@@ -4,7 +4,8 @@ const app = getApp()
 
 Page({
   data: {
-    motto: 'Start'
+    motto: 'Start',
+    test: true
   },
   //事件处理函数
   bindViewTap: function() {
@@ -12,7 +13,11 @@ Page({
       url: '../logs/logs'
     })
   },
-  onLoad: function() {},
+  onLoad: function() {
+    this.setData({
+      test: app.globalData.test
+    })
+  },
   //not use here...
   getUserInfo: function(e) {
     console.log(e)
@@ -36,6 +41,13 @@ Page({
       success: function(res) {},
       fail: function(res) {},
       complete: function(res) {},
+    })
+  },
+  changeIt: function() {
+    console.log("change it ...");
+    app.globalData.test = !app.globalData.test;
+    this.setData({
+      test: app.globalData.test
     })
   }
 })

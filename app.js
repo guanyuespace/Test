@@ -41,8 +41,8 @@ App({
   },
   globalData: {
     music_user: {
+      avatar:"http://p1.music.126.net/7ubV68Nbejws3cFCpGWNxw==/1385384660588488.jpg",
       id: 275438773,
-      // id:123,
       nickname: "关月天人"
     },
     security: {
@@ -55,6 +55,7 @@ App({
     playLists: [],
     curMusic: 0,
     /**按歌单进行播放 */
-    lyricPage: 0
+    lyricPage: 0,
+    test: true
   }
 })

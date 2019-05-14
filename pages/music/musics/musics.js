@@ -20,6 +20,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    if(app.globalData.test)
+    wx.switchTab({
+      url: '/pages/music/playlists/playlists'
+    });
     console.log("musics onLoad options=" + JSON.stringify(options));
     //init
     this.setData({
@@ -33,7 +37,7 @@ Page({
     //....
     //获取歌曲信息
     try {
-      var id = wx.getStorageSync("playlistid" + this.data.playlistid); //加载过多歌单信息... 
+      var id = wx.getStorageSync("playlistid" + this.data.playlistid); //加载过多歌单信息...
       //TODO:
       //list 保存最近10个歌单 ---> playlistid
       //removeStorage
@@ -154,7 +158,7 @@ Page({
     //play all music here
     if (this.data.musics && this.data.musics.length > 0) {
       //获取歌曲URL
-      var cur = this.data.musics[0]; 
+      var cur = this.data.musics[0];
       console.log("cur="+JSON.stringify(cur));
       core.getCachedMusic(cur.id, cur.name, app);
       app.globalData.playLists = this.data.musics;

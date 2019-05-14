@@ -21,16 +21,17 @@
     */
    onLoad: function(options) {
      console.log(JSON.stringify("playlists options=" + JSON.stringify(options)));
-     ///init 
+     ///init
      this.setData({
+       avatarUrl: app.globalData.music_user.avatar,
        userId: app.globalData.music_user.id,
        nickname: app.globalData.music_user.nickname
      }, () => {
        console.log("current userid=" + this.data.userId + "\t nickname=" + this.data.nickname);
      });
 
-     ///用户头像设置
-     try {
+     ///用户头像设置  2019-05-14 16:44 此请求无法获取头像
+     /*try {
        var uid = wx.getStorageSync("avatarUrl_id");
        console.log("avatar uid= " + uid);
        if (uid == this.data.userId) {
@@ -48,7 +49,7 @@
        }
      } catch (e) {
        console.log(JSON.stringify(e));
-     }
+     }*/
 
      ////用户歌单信息获取
      try {
@@ -118,7 +119,7 @@
       */
      app.globalData.audioPlayer.onNext(() => {
        //  console.log("next !!!!!");
-       // 系统后台播放管理  
+       // 系统后台播放管理
        if (app.globalData.playLists && app.globalData.playLists.length > 0) {
          app.globalData.curMusic = ++app.globalData.curMusic % app.globalData.playLists.length;
          var cur = app.globalData.playLists[app.globalData.curMusic]; //playLists.shift()
@@ -182,13 +183,15 @@
        ///用户头像设置
        if (this.data.userId != app.globalData.music_user.id) {
          this.setData({
+           avatarUrl: app.globalData.music_user.avatar,
            userId: app.globalData.music_user.id,
            nickname: app.globalData.music_user.nickname
          }, () => {
            console.log("update user=" + JSON.stringify(app.globalData.music_user));
          })
        }
-       try {
+
+       /*try {
          var uid = wx.getStorageSync("avatarUrl_id");
          console.log("avatar uid= " + uid);
          if (uid == this.data.userId) {
@@ -206,7 +209,7 @@
          }
        } catch (e) {
          console.log(JSON.stringify(e));
-       }
+       }*/
 
        ////用户歌单信息获取
        try {
@@ -289,21 +292,23 @@
      // console.log("get detail playlist event=" + JSON.stringify(event));
      var id = event.target.dataset.id;
      var name = event.target.dataset.name;
-     wx.navigateTo({
-       url: '/pages/music/musics/musics?id=' + id + "&name=" + name,
-       success: function(res) {},
-       fail: function(res) {},
-       complete: function(res) {},
-     })
+     if (!app.globalData.test)
+       wx.navigateTo({
+         url: '/pages/music/musics/musics?id=' + id + "&name=" + name,
+         success: function(res) {},
+         fail: function(res) {},
+         complete: function(res) {},
+       })
    },
    switchUserButton: function(event) {
      app.globalData.audioPlayer.stop();
      this.data.switchFlag = true;
-     wx.navigateTo({
-       url: '/pages/music/user/user',
-       success: function(res) {},
-       fail: function(res) {},
-       complete: function(res) {},
-     })
+     if (!app.globalData.test)
+       wx.navigateTo({
+         url: '/pages/music/user/user',
+         success: function(res) {},
+         fail: function(res) {},
+         complete: function(res) {},
+       })
    }
  })

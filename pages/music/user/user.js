@@ -70,6 +70,7 @@ Page({
   setUserId: function(event) {
     console.log("event=" + JSON.stringify(event));
     if (event.target) {
+      app.globalData.music_user.avatar = event.target.dataset.avatar;
       app.globalData.music_user.id = event.target.dataset.id;
       app.globalData.music_user.nickname = event.target.dataset.nickname;
     }

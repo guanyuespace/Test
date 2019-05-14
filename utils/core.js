@@ -1394,12 +1394,12 @@ var getAdvisedUsers = function(str, that) {
   });
 }
 /**
- * 获取用户信息
+ * 获取用户信息,why now ??不包含avatar 
  */
 var getUserInfo = function(uid, that) {
   wx.request({
-    // url: 'https://music.163.com/user/home',
     url: 'https://music.163.com/m/user/home',
+    // url: 'https://music.163.com/user/home',
     method: 'GET',
     data: {
       id: uid
@@ -1443,7 +1443,7 @@ var getPics = function() {
       // console.log(JSON.stringify(res));
       if (res.statusCode == 200) {
         var str = res.data;
-        //属性名不包含引号出错，无法parse 
+        //属性名不包含引号出错，无法parse
         var reg = /picUrl\s+:\s+\"([\w|\d|\\.|\\/|:|=]+)\"/g;
         var s;
         while ((s = reg.exec(str))) {

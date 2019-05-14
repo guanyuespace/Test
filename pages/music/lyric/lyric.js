@@ -27,6 +27,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    if(app.globalData.test)
+    wx.switchTab({
+      url: '/pages/music/playlists/playlists'
+    });
     console.log("lyricPage onLoad options=" + JSON.stringify(options));
     //init
     this.setData({
