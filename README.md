@@ -28,3 +28,17 @@ me: 测试获取微信个人运动数据，需要个人服务器获取Session，
 ![歌单详情](./Result/musics.jpg "歌单详情")       
 ![播放界面](./Result/lyric_index.jpg "播放界面")
 ![播放界面](./Result/lyric.jpg "歌词展示")
+
+
+## 通过审核
+>核心：隐藏音乐播放页面
+
+```
+小程序"TestYue"代码发布审核结果
+17:17:39
+你的小程序"TestYue"代码发布审核已通过。
+```
+操作在index页面新增一个按钮，点击该按钮后可以进行音乐播放，否则只能停留在playlist页面
+
+![审核通过_OK](./Result/passed_ok.jpg "审核通过_OK")
+![审核通过](./Result/passed.jpg "审核通过")    
