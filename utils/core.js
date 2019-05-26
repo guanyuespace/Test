@@ -1240,7 +1240,7 @@ var getLyric = function(musicid, that) {
                     var secs = temp.substr(1, 5);
                     var seconds = Number(temp.substr(1, 2)) * 60 + Number(temp.substr(4, 2));
                     var str = data[5];
-                    console.log("secs=" + secs + "\t seconds=" + seconds + "\t str=" + str);
+                    // console.log("secs=" + secs + "\t seconds=" + seconds + "\t str=" + str);
                     that.data.lyric_time.push({
                       secs: secs,
                       seconds: seconds,
@@ -1261,16 +1261,16 @@ var getLyric = function(musicid, that) {
               return a.seconds - b.seconds;
             });
 
-            console.log("...." + JSON.stringify(that.data.lyric_time));
+            // console.log("...." + JSON.stringify(that.data.lyric_time));
             that.setData({
+              nolyric: false,
               lyric_time: that.data.lyric_time
             });
           } else {
-            var lyric_str = "\n\n暂时没有歌词 求歌词";
             self.setData({
-              lyric_str: lyric_str
+              nolyric: true
             }, () => {
-              console.log(musicid + "\t" + lyric_str);
+              console.log(musicid + "\t" + "无歌词 ！");
             });
           }
         } else {

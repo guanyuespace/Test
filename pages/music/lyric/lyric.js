@@ -20,6 +20,8 @@ Page({
     temp: 0,
     bg: "",
     lyric_time: [],
+    nolyric:false,
+    lyric_str:"\n\n暂时没有歌词 求歌词",
     curIndex: 0
   },
 
@@ -131,7 +133,7 @@ Page({
           lastTime: this.data.lyric_time[i - 1 < 0 ? 0 : i - 1] ? this.data.lyric_time[i - 1 < 0 ? 0 : i - 1].secs : "00:00", //sometimes尚未获取歌词
           curIndex: i - 1
         }, () => {
-          console.log(this.data.currentTime + "\t" + this.data.percentNow + "lastTime=" + this.data.lastTime);
+          console.log("time: "+this.data.currentTime + "\t percent: " + this.data.percentNow + "\t lastTime=" + this.data.lastTime);
         });
       } else {
         clearInterval(this.data.timer);

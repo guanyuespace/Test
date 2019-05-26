@@ -136,11 +136,12 @@ Page({
     })
   },
   switch2lyric: function(event) {
+    // console.log("click: "+JSON.stringify(event));
     // app.globalData.playLists.push();//unshift//splice //but music object ...data-obj...
-    var id = event.target.dataset.id;
-    var name = event.target.dataset.refer;
-    var bg = event.target.dataset.bg;
-    var obj = event.target.dataset.obj;
+    var id = event.currentTarget.dataset.id;
+    var name = event.currentTarget.dataset.refer;
+    var bg = event.currentTarget.dataset.bg;
+    var obj = event.currentTarget.dataset.obj;
     console.log("????=" + bg);
     ////在指定位置添加元素,第一个参数指定位置,第二个参数指定要删除的元素,如果为0,则追加
     app.globalData.playLists.splice(app.globalData.curMusic, 0, obj);

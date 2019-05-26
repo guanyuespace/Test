@@ -289,9 +289,9 @@
 
    },
    getdetailPlayList: function(event) {
-     // console.log("get detail playlist event=" + JSON.stringify(event));
-     var id = event.target.dataset.id;
-     var name = event.target.dataset.name;
+    //  console.log("get detail playlist event=" + JSON.stringify(event));
+     var id = event.currentTarget.dataset.id;
+     var name = event.currentTarget.dataset.name;
      if (!app.globalData.test)
        wx.navigateTo({
          url: '/pages/music/musics/musics?id=' + id + "&name=" + name,

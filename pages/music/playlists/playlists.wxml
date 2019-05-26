@@ -8,12 +8,13 @@
 </view>
 <view class='infos'>
   <view class="playlists" wx:for="{{playlists}}" wx:key="id">
-    <view class='unit'>
+    <view class='unit' bindtap="getdetailPlayList" data-id="{{item.id}}" data-name="{{item.name}}">
+      <!-- bindtap="getdetailPlayList" data-id="{{item.id}}" data-name="{{item.name}}" -->
       <view class="imgforPlayList">
-        <image bindtap="getdetailPlayList" data-id="{{item.id}}" data-name="{{item.name}}" src="{{item.coverImgUrl}}"></image>
+        <image src="{{item.coverImgUrl}}"></image>
       </view>
       <view class="playlistName">
-        <text bindtap="getdetailPlayList" data-id="{{item.id}}" data-name="{{item.name}}">{{item.name}}</text>
+        <text>{{item.name}}</text>
       </view>
     </view>
   </view>

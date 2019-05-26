@@ -16,10 +16,10 @@
   <view class="details">
     <!--  scroll-y="true" -->
     <view class="eve_music" wx:for="{{musics}}" wx:for-item="item" wx:for-index="idx" wx:key="id">
-      <view class="unit">
+      <view class="unit" bindtap="switch2lyric" data-id="{{item.id}}" data-refer="{{item.name}}" data-obj="{{item}}" data-bg="{{item.al.picUrl}}">
         <view class="music_name">
           <!--  <image bindtap="switch2lyric" data-id="{{item.id}}" data-refer="{{item.name}}" style="width:17px;height:17px;margin-top:4px;" src="/res/play.png"></image> -->
-          <text bindtap="switch2lyric" data-id="{{item.id}}" data-refer="{{item.name}}" data-obj="{{item}}" data-bg="{{item.al.picUrl}}">{{item.name}}</text>
+          <text>{{item.name}}</text>
           <!-- ({{item.id}}) -->
         </view>
         <view class="music_ar">

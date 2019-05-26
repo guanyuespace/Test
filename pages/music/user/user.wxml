@@ -5,13 +5,13 @@
 <text>用户推荐：</text>
 <view class="users">
   <view class='advisedusers' wx:for="{{advisedUsers}}" wx:for-item="user" wx:key="userId">
-    <view class="unit">
+    <view class="unit" bindtap='setUserId' data-id="{{user.userId}}" data-avatar="{{user.avatarUrl}}" data-nickname="{{user.nickname}}">
       <view class="user_ava">
-        <image bindtap='setUserId' data-id="{{user.userId}}" data-avatar="{{user.avatarUrl}}" data-nickname="{{user.nickname}}" src="{{user.avatarUrl}}" class="advisedUserAvatar"></image>
+        <image src="{{user.avatarUrl}}" class="advisedUserAvatar"></image>
       </view>
       <view class="user_name">
-        <!--{{user.userId}}: -->
-        <text bindtap='setUserId' data-id="{{user.userId}}" data-avatar="{{user.avatarUrl}}" data-nickname="{{user.nickname}}">{{user.nickname}}</text>
+        <!--{{user.userId}}:  bindtap='setUserId' data-id="{{user.userId}}" data-avatar="{{user.avatarUrl}}" data-nickname="{{user.nickname}}"-->
+        <text>{{user.nickname}}</text>
         <!-- <text wx:if="{{user.signature}}!= bindtap='setUserId' data-id="{{user.userId}}" data-nickname="{{user.nickname}}">{{user.signature}}</text> -->
       </view>
     </view>

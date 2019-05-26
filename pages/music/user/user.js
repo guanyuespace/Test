@@ -69,10 +69,10 @@ Page({
   },
   setUserId: function(event) {
     console.log("event=" + JSON.stringify(event));
-    if (event.target) {
-      app.globalData.music_user.avatar = event.target.dataset.avatar;
-      app.globalData.music_user.id = event.target.dataset.id;
-      app.globalData.music_user.nickname = event.target.dataset.nickname;
+    if (event.currentTarget) {
+      app.globalData.music_user.avatar = event.currentTarget.dataset.avatar;
+      app.globalData.music_user.id = event.currentTarget.dataset.id;
+      app.globalData.music_user.nickname = event.currentTarget.dataset.nickname;
     }
     wx.switchTab({
       url: '/pages/music/playlists/playlists'

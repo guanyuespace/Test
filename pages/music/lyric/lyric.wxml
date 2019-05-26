@@ -16,19 +16,15 @@
         </view>
       </swiper-item>
       <swiper-item item-id="1">
-        <!-- 
-        <scroll-view scroll-y="true" class="lyric"> 
-            <text selectable="true" class="lyric_str">{{lyric_str}}</text>  
-        </scroll-view>
-        -->
-        <scroll-view scroll-y="true" class="lyric">
+        <scroll-view wx:if="{{!nolyric}}" scroll-y="true" class="lyric">
           <!-- curIndex*900/20 -->
-          <view style="transform: translateY({{(4-curIndex)*900/9}}rpx)" wx:for="{{lyric_time}}" wx:key="item" wx:for-item="item" wx:for-index="idx">
+          <view style="transform: translateY({{(5-curIndex)*1000/10}}rpx)" wx:for="{{lyric_time}}" wx:key="item" wx:for-item="item" wx:for-index="idx">
             <!--lastTime=item.secs, -->
             <!-- <text class="{{currentTime==item.secs?'highlight':lastTime==item.secs?'highlight':'common'}}" data-time="{{item.secs}}">{{item.str}}</text> -->
             <text class="{{lastTime==item.secs?'highlight':'common'}}" data-time="{{item.secs}}">{{item.str}}</text>
           </view>
         </scroll-view>
+        <view wx:if="{{nolyric}}" class="lyric_no">{{lyric_str}}</view>
       </swiper-item>
     </swiper>
   </view>

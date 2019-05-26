@@ -10,8 +10,9 @@ App({
 
     wx.login({
       success: res => {
+        // test,自备服务器完成Session获取
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        decrypt.getSession(this.globalData.security.appid, this.globalData.security.appsecret, res.code, this);
+        // decrypt.getSession(this.globalData.security.appid, this.globalData.security.appsecret, res.code, this);
       }
     });
     //test
