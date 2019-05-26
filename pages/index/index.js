@@ -43,8 +43,10 @@ Page({
       complete: function(res) {},
     })
   },
-  changeIt: function() {
-    console.log("change it ...");
+  changeIt: function(e) {
+    console.log("change it ..." + JSON.stringify(e));
+    app.globalData.wx_user.nickName = e.detail.userInfo.nickName;
+    app.globalData.wx_user.avatarUrl = e.detail.userInfo.avatarUrl;
     app.globalData.test = !app.globalData.test;
     this.setData({
       test: app.globalData.test

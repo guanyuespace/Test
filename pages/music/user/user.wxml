@@ -1,8 +1,7 @@
 <!--pages/music/user/user.wxml-->
-<text>pages/music/user/user.wxml</text>
-<text>输入：</text>
+<text>输入USERID：</text>
 <input id="user_id" focus="false" maxlength="10" type="text" placeholder='input userId' placeholder-style='color:gray;' confirm-type="done" bindconfirm='setUserIdInput' />
-<text>用户推荐：</text>
+<text style='margin-top: 20rpx;'>用户推荐：</text>
 <view class="users">
   <view class='advisedusers' wx:for="{{advisedUsers}}" wx:for-item="user" wx:key="userId">
     <view class="unit" bindtap='setUserId' data-id="{{user.userId}}" data-avatar="{{user.avatarUrl}}" data-nickname="{{user.nickname}}">

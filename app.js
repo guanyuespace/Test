@@ -41,8 +41,12 @@ App({
 
   },
   globalData: {
+    wx_user: {
+      nickName: "",
+      avatarUrl: ""
+    },
     music_user: {
-      avatar:"http://p1.music.126.net/7ubV68Nbejws3cFCpGWNxw==/1385384660588488.jpg",
+      avatar: "http://p1.music.126.net/7ubV68Nbejws3cFCpGWNxw==/1385384660588488.jpg",
       id: 275438773,
       nickname: "关月天人"
     },

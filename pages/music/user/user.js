@@ -9,6 +9,8 @@ Page({
    */
   data: {
     advisedUsers: [],
+    currentOffset: 0,
+    userprofileCount: 100
   },
 
   /**
@@ -16,7 +18,7 @@ Page({
    */
   onLoad: function(options) {
     // core.getAdvisedUsers(app.globalData.userInfo.nickName ? app.globalData.userInfo.nickName : "关月", this);
-    core.getAdvisedUsers("关月",this);
+    core.getAdvisedUsers(app.globalData.wx_user.nickName ? app.globalData.wx_user.nickName : "关月", this, this.data.currentOffset, 50);
   },
 
   /**
@@ -58,6 +60,8 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
+    if (this.data.currentOffset < this.data.userprofileCount)
+      core.getAdvisedUsers(app.globalData.wx_user.nickName ? app.globalData.wx_user.nickName : "关月", this, this.data.currentOffset, 50);
 
   },
 

@@ -9,7 +9,7 @@
   <view class="usermotto">
     <input id="user_id" focus="true" placeholder-style="color:gray" placeholder="userId:(default=275438773)" maxlength="10" type="text" confirm-type="done" bindconfirm='setUserId' />
     <view class="testtext" hidden='{{!test}}'>
-      <text bindtap='changeIt'>TEST</text>
+      <button open-type='getUserInfo' lang="zh_CN" bindgetuserinfo="changeIt">保存用户名&头像</button>
     </view>
     <button bindtap="switchToMenu">{{motto}}</button>
   </view>

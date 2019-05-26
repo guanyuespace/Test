@@ -1351,8 +1351,8 @@ var getCachedMusic = function(musicid, musicname, app) {
 /**
  * 根据关键字str搜索用户信息
  */
-var getAdvisedUsers = function(str, that) {
-  var req_str = "{\"hlpretag\":\"<span class=\\\"s-fc7\\\">\",\"hlposttag\":\"</span>\",\"s\":\"" + str + "\",\"type\":\"1002\",\"offset\":\"0\",\"total\":\"true\",\"limit\":\"50\",\"csrf_token\":\"\"}";
+var getAdvisedUsers = function(str, that, offset, limit) {
+  var req_str = "{\"hlpretag\":\"<span class=\\\"s-fc7\\\">\",\"hlposttag\":\"</span>\",\"s\":\"" + str + "\",\"type\":\"1002\",\"offset\":\"" + offset + "\",\"total\":\"true\",\"limit\":\"" + limit + "\",\"csrf_token\":\"\"}";
   var result = myFunc(req_str);
   wx.request({
     url: "https://music.163.com/weapi/cloudsearch/get/web?csrf_token=",
@@ -1369,7 +1369,9 @@ var getAdvisedUsers = function(str, that) {
       if (res.statusCode == 200) {
         if (res.data.code == 200) {
           that.setData({ //this.setData  undifined
-            advisedUsers: res.data.result.userprofiles
+            advisedUsers: res.data.result.userprofiles,
+            userprofileCount: res.data.result.userprofileCount,
+            currentOffset: offset + limit
           }, () => {
             if (!that.data.advisedUsers || that.data.advisedUsers.length == 0) {
               console.log("无法获取网易云同名的推荐用户");
